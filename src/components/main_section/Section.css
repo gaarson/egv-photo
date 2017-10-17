@@ -1,0 +1,106 @@
+.section, .intro, .career, .aboutMe, .contact, .download {
+  background-size: cover !important;
+  background-attachment: fixed !important;
+  background-position: bottom center !important;
+  background-repeat: no-repeat !important;
+  min-height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 3em 0;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  overflow: hidden;
+  height: 100vh;}
+
+.title, .welcome-title, .info-title, .work-title, .contact-title {
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 20px; }
+  .arrow, .arrow-down {
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 15px; }
+
+.arrow-down {
+  -webkit-transform: rotate(45deg);
+      -ms-transform: rotate(45deg);
+          transform: rotate(45deg); }
+
+.btn, .btn-circle, .btn-bottom {
+  width: 84px;
+  border: 2px solid #fff;
+  text-align: center;
+  display: inline-block;
+  -webkit-transition: .2s;
+  transition: .2s; }
+
+.btn-circle {
+  -webkit-border-radius: 50%;
+          border-radius: 50%;
+  height: 85px;
+  line-height: 85px; }
+
+.btn-bottom {
+  border-bottom: none;
+  -webkit-border-radius: 50% 50% 0 0;
+          border-radius: 50% 50% 0 0;
+  height: 90px;
+  line-height: 90px;
+  margin-left: -42px;
+  position: absolute;
+  left: 50%;
+  bottom: 0; }
+
+.btn-form {
+  padding: 4px 10px;
+  font-size: 16px;
+  color: #676d79;
+  font-weight: 600;
+  display: inline-block;
+  position: relative;
+  -webkit-transition: all 0.2s cubic-bezier(0.02, 0.01, 0.47, 1);
+  transition: all 0.2s cubic-bezier(0.02, 0.01, 0.47, 1); }
+  .btn-form:hover {
+    letter-spacing: 2px;
+    opacity: .9;
+    -webkit-transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
+    transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1); }
+  .btn-form:after, .btn-form:before {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #e5e6e7;
+    content: '';
+    opacity: .65;
+    -webkit-transition: all 0.2s cubic-bezier(0.02, 0.01, 0.47, 1);
+    transition: all 0.2s cubic-bezier(0.02, 0.01, 0.47, 1);
+    -webkit-transform: scaleX(0);
+        -ms-transform: scaleX(0);
+            transform: scaleX(0); }
+  .btn-form:before {
+    bottom: 0; }
+  .btn-form:after {
+    top: 0; }
+  .btn-form:focus:after, .btn-form:focus:before, .btn-form:hover:after, .btn-form:hover:before {
+    opacity: 1;
+    -webkit-transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
+    transition: all 0.3s cubic-bezier(0.02, 0.01, 0.47, 1);
+    -webkit-transform: scaleX(1);
+        -ms-transform: scaleX(1);
+            transform: scaleX(1); }
+
+@media (max-width: 480px) {
+  .btn-circle,
+  .btn-bottom {
+    display: none; } } 
