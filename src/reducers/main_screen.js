@@ -24,6 +24,7 @@ const defaultSections = [
     type: 'intro',
     title: 'Some text',
     content: 'Another SomeText',
+    to: 'four',
     photo: '/img/1.jpg',
   },
 ];

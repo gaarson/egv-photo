@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 
-import './index.css';
+import './style.css';
 import sagas from './side-effects';
 import reducers from './reducers';
 import App from './components/App';
