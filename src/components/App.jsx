@@ -3,16 +3,16 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Header from './header/Header';
 import Footer from './footer/Footer';
-import Section from './main_section/Section';
-import Feedback from './feedback/Feedback';
+import Main from './main/Main';
+import Gallery from './gallery/Gallery';
 
 const App = () => (
   <Router>
     <div className="container">
-      <Route exact path="/" component={Header} />
-      <Route path="/" component={Section} />
-      <Route path="/" component={Feedback} />
-      <Route exact path="/" component={Footer} />
+      <Route path="/" component={Header} />
+      <Route exact path="/" component={Main} />
+      <Route exact path="/gallery" component={Gallery} />
+      <Route path="/" component={Footer} />
     </div>
   </Router>
 );

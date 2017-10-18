@@ -1,30 +1,30 @@
 
 const defaultSections = [
   {
-    number: 'one',
+    number: '',
     type: 'intro',
     mainType: 'welcome',
     title: 'Some text',
     content: 'Another SomeText',
-    to: 'two',
+    to: 'one',
     photo: '/img/3.jpg',
   },
   {
-    number: 'two',
+    number: 'one',
     mainType: 'info',
     type: 'career',
     title: 'Some text',
     content: 'Another SomeText',
-    to: 'three',
+    to: 'two',
     photo: '/img/2.jpg',
   },
   {
-    number: 'three',
+    number: 'two',
     mainType: 'info',
-    type: 'intro',
+    type: 'aboutMe',
     title: 'Some text',
     content: 'Another SomeText',
-    to: 'four',
+    to: 'three',
     photo: '/img/1.jpg',
   },
 ];

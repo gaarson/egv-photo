@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => (
   <nav id="nav">
@@ -8,7 +9,7 @@ const Header = () => (
       <li className="navbar-itm"><a href="#three" className="navbar-link">Работы</a></li>
       <li className="navbar-itm"><a href="#four" className="navbar-link">Контакты</a></li>
     </ul>
-    <h1 className="logo">Евгений Жуков</h1>
+    <h1 className="logo"><Link to="/">Евгений Жуков</Link></h1>
   </nav>
 );
 
