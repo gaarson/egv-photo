@@ -21,31 +21,37 @@ class Main extends React.Component {
 
     $(document).scroll((e) => {
       const coord = $('.career').offset();
-      if (($(window).height() + $(window).scrollTop() >= coord.top * 1.5) && 
-            ($(window).scrollTop() - (coord.top * 1.5) < 0)) {
-        $('.career').addClass('animation');
-      } else {
-        $('.career').removeClass('animation')
+      if (coord) {
+        if (($(window).height() + $(window).scrollTop() >= coord.top * 1.5) && 
+              ($(window).scrollTop() - (coord.top * 1.5) < 0)) {
+          $('.career').addClass('animation');
+        } else {
+          $('.career').removeClass('animation')
+        }
       }
     })
 
     $(document).scroll((e) => {
       const coord = $('.aboutMe').offset();
-      if (($(window).height() + $(window).scrollTop() >= coord.top * 1.25) &&
-           ($(window).scrollTop() - (coord.top * 1.25) < 0)) {
-        $('.aboutMe').addClass('animation');
-      } else {
-        $('.aboutMe').removeClass('animation')
+      if (coord) {
+        if (($(window).height() + $(window).scrollTop() >= coord.top * 1.25) &&
+            ($(window).scrollTop() - (coord.top * 1.25) < 0)) {
+          $('.aboutMe').addClass('animation');
+        } else {
+          $('.aboutMe').removeClass('animation')
+        }
       }
     })
-        
+
     window.$(document).scroll((e) => {
       const coord = $('.work').offset();
-      if (($(window).height() + $(window).scrollTop() >= coord.top * 1.25) && 
-            ($(window).scrollTop() - (coord.top * 1.7) < 0)) {
-        $('.work').addClass('animation');
-      } else {
-        $('.work').removeClass('animation')
+      if (coord) {
+        if (($(window).height() + $(window).scrollTop() >= coord.top * 1.25) && 
+              ($(window).scrollTop() - (coord.top * 1.7) < 0)) {
+          $('.work').addClass('animation');
+        } else {
+          $('.work').removeClass('animation')
+        }
       }
     })
   }

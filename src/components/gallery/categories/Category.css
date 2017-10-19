@@ -1,0 +1,29 @@
+.gallery-block section {
+  position: relative;
+  top: 30px;
+}
+
+.category-block {
+  cursor: pointer;
+}
+
+.category-block .active {
+  opacity: 1;
+}
+
+.category-title {
+  text-align: center;
+  position: relative;
+  top: 90px;
+}
+
+.category-img {
+  width: 250px;
+  height: 160px;
+  opacity: .7;
+}
+
+.category-block:hover .category-img {
+  transition: 0.5s;
+  opacity: 1;
+}

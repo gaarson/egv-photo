@@ -1,0 +1,11 @@
+.gallery-category {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery-photos {
+  position: relative;
+  top: 25px;
+}

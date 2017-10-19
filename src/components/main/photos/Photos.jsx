@@ -21,7 +21,7 @@ const Photos = ({ photos }) => (
           ))
         }
       </div>
-        <Link to="/galery"><p className="btn-form">Все работы</p></Link>
+        <Link to="/gallery"><p className="btn-form">Все работы</p></Link>
     </div>
   </section>
 );
