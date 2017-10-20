@@ -1,5 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Photos from 'react-photo-gallery';
+import LightBox from 'react-images';
 
 import Category from './categories/Category';
 
@@ -54,6 +56,14 @@ const categories = [
   },
 ];
 
+const mapState = () => ({
+
+});
+
+const mapDispatch = dispatch => ({
+
+})
+
 const Gallery = () => (
   <div className="gallery-block">
     <div className="gallery-category">
@@ -68,10 +78,9 @@ const Gallery = () => (
         ))
       }
     </div>
-    <div className="gallery-photos">
-      <Photos photos={arr} />
-    </div>
+    <Photos photos={arr} />
+    <LightBox />
   </div>
 );
 
-export default Gallery;
+export default connect(mapState, mapDispatch)(Gallery);
