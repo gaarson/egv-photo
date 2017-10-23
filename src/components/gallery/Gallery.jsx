@@ -1,86 +1,81 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Photos from 'react-photo-gallery';
 import LightBox from 'react-images';
 
 import Category from './categories/Category';
+import Actions from '../../actions';
 
 import './Gallery.css';
 
-const arr = [
-  {
-    src: '/img/1.jpg',
-    width: 800,
-    height: 400,
-  },
-  {
-    src: '/img/2.jpg',
-    width: 600,
-    height: 400,
-  },
-  {
-    src: '/img/3.jpg',
-    width: 800,
-    height: 400,
-  },
-  {
-    src: '/img/4.png',
-    width: 800,
-    height: 400,
-  },
-  {
-    src: '/img/5.jpg',
-    width: 800,
-    height: 400,
-  },
-];
-
-const categories = [
-  { 
-    id: 1,
-    title: 'Свадьбы',
-    pic: '/img/5.jpg',
-    active: false,
-  },
-  {
-    id: 2,
-    title: 'Корпоративы',
-    pic: '/img/3.jpg',
-    active: true,
-  },
-  {
-    id: 3,
-    title: 'Сессии',
-    pic: '/img/1.jpg',
-    active: false,
-  },
-];
-
-const mapState = () => ({
-
+const mapStateToProps = ({ 
+  galleryPhotos,
+  galleryCategories,
+  ligthBox,
+}) => ({
+  galleryPhotos,
+  galleryCategories,
+  ligthBox,
 });
 
-const mapDispatch = dispatch => ({
+const mapDispatchToProps = dispatch => ({
+  move: e => dispatch(Actions.gallery.move(e)),
+  open: e => dispatch(Actions.gallery.open(e.target)),
+  close: () => dispatch(Actions.gallery.close()),
+  change: (id) => {
+    dispatch(Actions.gallery.changeCategory(id));
+    dispatch(Actions.gallery.pending(id));
+  },
+});
 
-})
-
-const Gallery = () => (
+const Gallery = ({ 
+  galleryPhotos,
+  galleryCategories,
+  ligthBox,
+  change,
+  close,
+  move,
+  open,
+}) => (
   <div className="gallery-block">
     <div className="gallery-category">
       {
-        categories.map(cat => (
+        galleryCategories.map(cat => (
           <Category
             key={cat.id}
             title={cat.title} 
+            change={() => change(cat.id)}
             pic={cat.pic} 
             active={cat.active}
           />
         ))
       }
     </div>
-    <Photos photos={arr} />
-    <LightBox />
+    <Photos 
+      photos={galleryPhotos} 
+      onClick={open} 
+    />
+    <LightBox
+      isOpen={ligthBox.open}
+      images={ligthBox.images}
+      currentImage={ligthBox.currentImage}
+      onClickPrev={() => move(-1)}
+      onClickNext={() => move(1)}
+      onClickImage={() => move(1)}
+      onClose={close}
+    />
   </div>
 );
 
-export default connect(mapState, mapDispatch)(Gallery);
+Gallery.propTypes = {
+  galleryCategories: PropTypes.array,
+  galleryPhotos: PropTypes.array,
+  ligthBox: PropTypes.object,
+  change: PropTypes.func,
+  close: PropTypes.func,
+  move: PropTypes.func,
+  open: PropTypes.func,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Gallery);

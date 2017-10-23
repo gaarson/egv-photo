@@ -20,7 +20,7 @@
 .category-img {
   width: 250px;
   height: 160px;
-  opacity: .7;
+  opacity: .3;
 }
 
 .category-block:hover .category-img {

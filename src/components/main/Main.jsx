@@ -19,7 +19,7 @@ class Main extends React.Component {
       return false;
     });
 
-    $(document).scroll((e) => {
+    $(document).scroll(() => {
       const coord = $('.career').offset();
       if (coord) {
         if (($(window).height() + $(window).scrollTop() >= coord.top * 1.5) && 
@@ -31,7 +31,7 @@ class Main extends React.Component {
       }
     })
 
-    $(document).scroll((e) => {
+    $(document).scroll(() => {
       const coord = $('.aboutMe').offset();
       if (coord) {
         if (($(window).height() + $(window).scrollTop() >= coord.top * 1.25) &&
@@ -43,7 +43,7 @@ class Main extends React.Component {
       }
     })
 
-    window.$(document).scroll((e) => {
+    $(document).scroll(() => {
       const coord = $('.work').offset();
       if (coord) {
         if (($(window).height() + $(window).scrollTop() >= coord.top * 1.25) && 
