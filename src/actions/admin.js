@@ -1,4 +1,4 @@
-import { ADMIN } from "../consts";
+import { ADMIN, AUTH } from "../consts";
 
 export default {
   photosPending: categoryId => ({ type: ADMIN.PHOTOS_PENDING, categoryId }),
@@ -33,5 +33,9 @@ export default {
   removeCategoryError: error => ({ type: ADMIN.REMOVE_CATEGORY_ERROR, error }),
 
   fillForm: event => ({ type: ADMIN.FILL_PHOTO_FORM, event }),
-  fillCategoryForm: event => ({ type: ADMIN.FILL_CATEGORY_FORM, event })
+  fillCategoryForm: event => ({ type: ADMIN.FILL_CATEGORY_FORM, event }),
+
+  auth: admin => ({ type: AUTH.PENDING, admin }),
+  authSuccess: () => ({ type: AUTH.SUCCESS }),
+  authError: error => ({ type: AUTH.ERROR, error })
 };

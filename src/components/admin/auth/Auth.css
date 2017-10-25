@@ -1,0 +1,14 @@
+.auth {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.auth p {
+  padding-top: 10px;
+  padding-bottom: 30px;
+}
+
+.auth input {
+  text-align: center;
+}

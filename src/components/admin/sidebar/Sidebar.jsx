@@ -1,13 +1,13 @@
-import React from "react";
-import { connect } from "react-redux";
-import Actions from "../../../actions";
+import React from 'react';
+import { connect } from 'react-redux';
+import Actions from '../../../actions';
 
-import "./Sidebar.css";
+import './Sidebar.css';
 
 const mapStateToProps = ({ adminPhotos }) => ({ adminPhotos });
 
 const mapDispatchToProps = dispatch => ({
-  deletePhoto: id => dispatch(Actions.admin.deletePhoto(id))
+  deletePhoto: id => dispatch(Actions.admin.deletePhoto(id)),
 });
 
 const Sidebar = ({ adminPhotos, deletePhoto }) => {
@@ -16,6 +16,16 @@ const Sidebar = ({ adminPhotos, deletePhoto }) => {
     <aside className="catalog catalog-js">
       <div className="close close-js">
         <i className="fa fa-times close-icon" aria-hidden="true" />
+      </div>
+      <div className="change">
+        <ul>
+          <li>
+            <p>Упраление категориями</p>
+          </li>
+          <li>
+            <p>Упраление фотографиями</p>
+          </li>
+        </ul>
       </div>
       <div className="catalog-content">
         <ul>

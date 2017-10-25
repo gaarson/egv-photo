@@ -1,21 +1,42 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-const Feedback = () => (
+import { mainScreen } from '../../../actions';
+
+const mapDispatchToProps = dispatch => ({
+  fill: e => dispatch(mainScreen.setFeedback(e.target)),
+  send: () => dispatch(mainScreen.sendFeedback()),
+});
+
+const Feedback = ({ fill, send }) => (
   <section id="four" className="contact">
     <div className="contact-content">
       <h2 className="contact-title">Оставьте заявку</h2>
       <form action="" className="form">
         <div className="input-col">
-          <input type="text" placeholder="Имя" />
+          <input type="text" placeholder="Имя" id="name" onChange={fill} />
         </div>
         <div className="input-col">
-          <input type="email" placeholder="Email" />
+          <input type="email" placeholder="Email" id="email" onChange={fill} />
         </div>
-        <textarea rows="5" placeholder="Сообщение" />
-        <a href="#one" className="btn-form">Отправить</a>
+        <textarea
+          rows="5"
+          placeholder="Сообщение"
+          id="discription"
+          onChange={fill}
+        />
+        <a href="#one" className="btn-form" onClick={send}>
+          Отправить
+        </a>
       </form>
     </div>
   </section>
 );
 
-export default Feedback;
+Feedback.propTypes = {
+  fill: PropTypes.func.isRequired,
+  send: PropTypes.func.isRequired,
+};
+
+export default connect(null, mapDispatchToProps)(Feedback);

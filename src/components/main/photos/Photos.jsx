@@ -1,6 +1,6 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 const mapState = ({ mainPhotos }) => ({ photos: mainPhotos });
 
@@ -9,19 +9,18 @@ const Photos = ({ photos }) => (
     <div className="work-content">
       <h2 className="work-title">Мои работы.</h2>
       <div id="thumbnails" className="work-gallery">
-        {
-          photos.map(item => (
-            <article key={item.id} className="work-gallery--itm">
-              <a className="thumbnail" href="/galery">
-                <img src={item.url} alt="" />
-              </a>
-              <h2>Diam tempus accumsan</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            </article>
-          ))
-        }
+        {photos.map(item => (
+          <article key={item.id} className="work-gallery--itm">
+            <a className="thumbnail" href="/gallery">
+              <img src={item.src} alt="" />
+            </a>
+            <h2>{item.caption}</h2>
+          </article>
+        ))}
       </div>
-        <Link to="/gallery"><p className="btn-form">Все работы</p></Link>
+      <Link to="/gallery">
+        <p className="btn-form">Все работы</p>
+      </Link>
     </div>
   </section>
 );
