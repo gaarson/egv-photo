@@ -1,10 +1,7 @@
 module.exports = {
-  plugins: ["prettier"],
-  rules: {
-    "prettier/prettier": "error"
-  },
+  plugins: ['prettier'],
   env: {
-    browser: true
+    browser: true,
   },
-  extends: "airbnb"
+  extends: 'airbnb',
 };

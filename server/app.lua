@@ -1,12 +1,10 @@
 local lapis = require("lapis")
 local app = lapis.Application()
 
-app:get("/", function()
-  return "Welcome fuck " .. require("lapis.version")
-end)
+local respond_to = require ("lapis.application").respond_to
 
-app:get("/hello", function() 
-  return "Hellos Worlds"
-end)
+local main = require "controllers.main"
+
+app:match('/api/main', respond_to(main))
 
 return app

@@ -11,9 +11,14 @@ class Main extends React.Component {
     $(document).ready(() => {
       $('a[href*="#"]').bind('click', function cb(e) {
         const anchor = $(this);
-        $('html, body').stop().animate({
-          scrollTop: $(anchor.attr('href')).offset().top
-        }, 1000);
+        $('html, body')
+          .stop()
+          .animate(
+            {
+              scrollTop: $(anchor.attr('href')).offset().top,
+            },
+            1000,
+          );
         e.preventDefault();
       });
       return false;
@@ -21,39 +26,48 @@ class Main extends React.Component {
 
     $(document).scroll(() => {
       const coord = $('.career').offset();
+      const count = coord.top * 1.5;
       if (coord) {
-        if (($(window).height() + $(window).scrollTop() >= coord.top * 1.5) && 
-              ($(window).scrollTop() - (coord.top * 1.5) < 0)) {
+        if (
+          $(window).height() + $(window).scrollTop() >= coord.top * 1.5 &&
+          $(window).scrollTop() - count < 0
+        ) {
           $('.career').addClass('animation');
         } else {
-          $('.career').removeClass('animation')
+          $('.career').removeClass('animation');
         }
       }
-    })
+    });
 
     $(document).scroll(() => {
       const coord = $('.aboutMe').offset();
+      const count = coord.top * 1.25;
       if (coord) {
-        if (($(window).height() + $(window).scrollTop() >= coord.top * 1.25) &&
-            ($(window).scrollTop() - (coord.top * 1.25) < 0)) {
+        if (
+          $(window).height() + $(window).scrollTop() >= coord.top * 1.25 &&
+          $(window).scrollTop() - count < 0
+        ) {
           $('.aboutMe').addClass('animation');
         } else {
-          $('.aboutMe').removeClass('animation')
+          $('.aboutMe').removeClass('animation');
         }
       }
-    })
+    });
 
     $(document).scroll(() => {
       const coord = $('.work').offset();
+      const count = coord.top * 1.7;
       if (coord) {
-        if (($(window).height() + $(window).scrollTop() >= coord.top * 1.25) && 
-              ($(window).scrollTop() - (coord.top * 1.7) < 0)) {
+        if (
+          $(window).height() + $(window).scrollTop() >= coord.top * 1.25 &&
+          $(window).scrollTop() - count < 0
+        ) {
           $('.work').addClass('animation');
         } else {
-          $('.work').removeClass('animation')
+          $('.work').removeClass('animation');
         }
       }
-    })
+    });
   }
 
   render() {

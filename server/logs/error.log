@@ -22,3 +22,6 @@
 2017/10/11 20:39:31 [alert] 15555#0: lua_code_cache is off; this will hurt performance in /Users/gaarson/programming/web/projects/evg_photo/server/nginx.conf.compiled:16
 2017/10/11 20:40:02 [alert] 15591#0: lua_code_cache is off; this will hurt performance in /Users/gaarson/programming/web/projects/evg_photo/server/nginx.conf.compiled:16
 2017/10/11 20:40:24 [alert] 15627#0: lua_code_cache is off; this will hurt performance in /Users/gaarson/programming/web/projects/evg_photo/server/nginx.conf.compiled:16
+2017/10/24 23:23:53 [alert] 45299#0: lua_code_cache is off; this will hurt performance in /Users/gaarson/programming/web/projects/evg_photo/server/nginx.conf.compiled:16
+2017/10/24 23:37:36 [alert] 45677#0: lua_code_cache is off; this will hurt performance in /Users/gaarson/programming/web/projects/evg_photo/server/nginx.conf.compiled:16
+2017/10/25 00:08:01 [alert] 45954#0: lua_code_cache is off; this will hurt performance in /Users/gaarson/programming/web/projects/evg_photo/server/nginx.conf.compiled:16
