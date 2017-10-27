@@ -26,8 +26,8 @@ class Main extends React.Component {
 
     $(document).scroll(() => {
       const coord = $('.career').offset();
-      const count = coord.top * 1.5;
       if (coord) {
+        const count = coord.top * 1.5;
         if (
           $(window).height() + $(window).scrollTop() >= coord.top * 1.5 &&
           $(window).scrollTop() - count < 0
@@ -41,8 +41,8 @@ class Main extends React.Component {
 
     $(document).scroll(() => {
       const coord = $('.aboutMe').offset();
-      const count = coord.top * 1.25;
       if (coord) {
+        const count = coord.top * 1.25;
         if (
           $(window).height() + $(window).scrollTop() >= coord.top * 1.25 &&
           $(window).scrollTop() - count < 0
@@ -56,8 +56,8 @@ class Main extends React.Component {
 
     $(document).scroll(() => {
       const coord = $('.work').offset();
-      const count = coord.top * 1.7;
       if (coord) {
+        const count = coord.top * 1.7;
         if (
           $(window).height() + $(window).scrollTop() >= coord.top * 1.25 &&
           $(window).scrollTop() - count < 0

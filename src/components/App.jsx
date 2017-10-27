@@ -7,6 +7,7 @@ import Main from './main/Main';
 import Gallery from './gallery/Gallery';
 import Admin from './admin/Admin';
 import Blog from './blog/Blog';
+import Article from './blog/article/Article';
 
 const routes = [
   {
@@ -33,6 +34,11 @@ const routes = [
     path: '/news',
     exact: true,
     main: Blog,
+  },
+  {
+    path: '/news/:id',
+    exact: true,
+    main: Article,
   },
   {
     path: '/',

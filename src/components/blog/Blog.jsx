@@ -1,27 +1,30 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Article from './article/Article';
-
 import './Blog.css';
+
+const mapStateToProps = ({ news }) => ({
+  news,
+});
 
 class Blog extends React.Component {
   componentDidMount() {}
   render() {
+    const { news } = this.props;
     return (
       <div className="blog-container">
         <div className="blog-row">
-          <Article />
-          <Article />
-          <Article />
-          <Article />
-          <Article />
-          <Article />
-          <Article />
+          {news.map(article => <Article key={article.id} info={article} />)}
         </div>
       </div>
     );
   }
 }
 
-export default connect()(Blog);
+Blog.propTypes = {
+  news: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
+export default connect(mapStateToProps)(Blog);

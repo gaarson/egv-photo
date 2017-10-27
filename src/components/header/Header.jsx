@@ -1,28 +1,38 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = ({ location: { pathname } }) => (
-  <nav id="nav" style={{ display: pathname.search("admin") !== -1 && "none" }}>
+  <nav id="nav" style={{ display: pathname.search('admin') !== -1 && 'none' }}>
     <ul className="navbar">
       <li className="navbar-itm">
-        <a href="#one" className="navbar-link">
+        <Link to="#one" className="navbar-link">
           Чем я занимаюсь
-        </a>
+        </Link>
       </li>
       <li className="navbar-itm">
-        <a href="#two" className="navbar-link">
+        <Link to="#two" className="navbar-link">
           Обо мне
-        </a>
+        </Link>
       </li>
       <li className="navbar-itm">
-        <a href="#three" className="navbar-link">
+        <Link to="#three" className="navbar-link">
           Работы
-        </a>
+        </Link>
       </li>
       <li className="navbar-itm">
-        <a href="#four" className="navbar-link">
+        <Link to="#four" className="navbar-link">
           Контакты
-        </a>
+        </Link>
+      </li>
+      <li className="navbar-itm">
+        <Link to="/news" className="navbar-link">
+          Последние новости
+        </Link>
+      </li>
+      <li className="navbar-itm">
+        <Link to="#four" className="navbar-link">
+          Прайс-лист
+        </Link>
       </li>
     </ul>
     <h1 className="logo">
