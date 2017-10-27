@@ -1,38 +1,44 @@
-import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import Header from "./header/Header";
-import Footer from "./footer/Footer";
-import Main from "./main/Main";
-import Gallery from "./gallery/Gallery";
-import Admin from "./admin/Admin";
+import Header from './header/Header';
+import Footer from './footer/Footer';
+import Main from './main/Main';
+import Gallery from './gallery/Gallery';
+import Admin from './admin/Admin';
+import Blog from './blog/Blog';
 
 const routes = [
   {
-    path: "/",
+    path: '/',
     exact: false,
-    main: Header
+    main: Header,
   },
   {
-    path: "/",
+    path: '/',
     exact: true,
-    main: Main
+    main: Main,
   },
   {
-    path: "/gallery",
+    path: '/gallery',
     exact: true,
-    main: Gallery
+    main: Gallery,
   },
   {
-    path: "/admin",
+    path: '/admin',
     exact: true,
-    main: Admin
+    main: Admin,
   },
   {
-    path: "/",
+    path: '/news',
+    exact: true,
+    main: Blog,
+  },
+  {
+    path: '/',
     exact: false,
-    main: Footer
-  }
+    main: Footer,
+  },
 ];
 
 const App = () => (
