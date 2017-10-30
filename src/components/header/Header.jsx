@@ -30,7 +30,7 @@ const Header = ({ location: { pathname } }) => (
         </Link>
       </li>
       <li className="navbar-itm">
-        <Link to="#four" className="navbar-link">
+        <Link to="/prices" className="navbar-link">
           Прайс-лист
         </Link>
       </li>

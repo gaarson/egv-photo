@@ -1,14 +1,15 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import Actions from "../../../actions";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import Actions from '../../../actions';
 
 const mapStateToProps = ({ editPhoto }) => ({ editPhoto });
 
 const mapDispatchToProps = dispatch => ({
   fillForm: e => dispatch(Actions.admin.fiilForm(e.target)),
-  uploadImage: event => dispatch(Actions.admin.uploadPhoto(event.files[0])),
-  addPhoto: () => dispatch(Actions.admin.updatePhoto())
+  uploadImage: event =>
+    dispatch(Actions.admin.uploadPhoto(event.target.files[0])),
+  addPhoto: () => dispatch(Actions.admin.updatePhoto()),
 });
 
 const PhotoForm = ({ editPhoto, fillForm, addPhoto, uploadImage }) => (
@@ -65,7 +66,7 @@ PhotoForm.propTypes = {
   addPhoto: PropTypes.func,
   fillForm: PropTypes.func,
   uploadImage: PropTypes.func,
-  editPhoto: PropTypes.object
+  editPhoto: PropTypes.object,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PhotoForm);

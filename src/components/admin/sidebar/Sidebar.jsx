@@ -1,38 +1,68 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Actions from '../../../actions';
+import { Link } from 'react-router-dom';
+import { admin } from '../../../actions';
 
 import './Sidebar.css';
 
-const mapStateToProps = ({ adminPhotos }) => ({ adminPhotos });
-
-const mapDispatchToProps = dispatch => ({
-  deletePhoto: id => dispatch(Actions.admin.deletePhoto(id)),
+const mapStateToProps = ({ adminPhotos, adminCategories, adminNews }) => ({
+  adminPhotos,
+  adminCategories,
+  adminNews,
 });
 
-const Sidebar = ({ adminPhotos, deletePhoto }) => {
-  console.log(adminPhotos);
+const mapDispatchToProps = dispatch => ({
+  deletePhoto: id => dispatch(admin.deletePhoto(id)),
+  deleteCategory: id => dispatch(admin.removeCategory(id)),
+  deleteArticle: id => dispatch(admin.deleteArticle(id)),
+});
+
+const Sidebar = ({
+  adminPhotos,
+  adminCategories,
+  adminNews,
+  deletePhoto,
+  deleteCategory,
+  deleteArticle,
+  route,
+}) => {
+  let list = [];
+  let del = null;
+
+  if (route.type === 'photos') {
+    list = adminPhotos;
+    del = deletePhoto;
+  } else if (route.type === 'categories') {
+    list = adminCategories;
+    del = deleteCategory;
+  } else if (route.type === 'news') {
+    list = adminNews;
+    del = deleteArticle;
+  }
+
   return (
     <aside className="catalog catalog-js">
       <div className="close close-js">
         <i className="fa fa-times close-icon" aria-hidden="true" />
       </div>
-      <div className="change">
-        <ul>
-          <li>
-            <p>Упраление категориями</p>
-          </li>
-          <li>
-            <p>Упраление фотографиями</p>
-          </li>
-        </ul>
-      </div>
+      <ul className="change">
+        <li>
+          <Link to="/admin/categories">Категории</Link>
+        </li>
+        <li>
+          <Link to="/admin/photos">Фото</Link>
+        </li>
+        <li>
+          <Link to="/admin/news">Новости</Link>
+        </li>
+      </ul>
       <div className="catalog-content">
         <ul>
-          {adminPhotos.map(item => (
+          {list.map(item => (
             <li key={item.id}>
               <a>{item.title}</a>
-              <a className="delete-photo" onClick={() => deletePhoto(item.id)}>
+              <a className="delete-photo" onClick={() => del(item.id)}>
                 &times;
               </a>
             </li>
@@ -41,6 +71,16 @@ const Sidebar = ({ adminPhotos, deletePhoto }) => {
       </div>
     </aside>
   );
+};
+
+Sidebar.propTypes = {
+  adminCategories: PropTypes.arrayOf(PropTypes.object).isRequired,
+  deleteCategory: PropTypes.func.isRequired,
+  adminNews: PropTypes.arrayOf(PropTypes.object).isRequired,
+  deleteArticle: PropTypes.func.isRequired,
+  adminPhotos: PropTypes.arrayOf(PropTypes.object).isRequired,
+  deletePhoto: PropTypes.func.isRequired,
+  route: PropTypes.objectOf(PropTypes.string).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);

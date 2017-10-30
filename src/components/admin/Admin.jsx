@@ -4,16 +4,14 @@ import { connect } from 'react-redux';
 
 import Sidebar from './sidebar/Sidebar';
 import Burger from './burger/Burger';
-import PhotoForm from './photo-form/PhotoForm';
 import Auth from './auth/Auth';
+import PhotoForm from './photo-form/PhotoForm';
+import CategoryForm from './category-form/CategoryForm';
+import ArticleForm from './article-form/ArticleForm';
 
-const mapStateToProps = ({ auth }) => ({
-  auth,
-});
+const mapStateToProps = ({ auth }, { match: { params } }) => ({ auth, params });
 
 class Admin extends React.Component {
-  componentWillMount() {}
-
   componentDidMount() {
     const { $ } = window;
     const inputs = document.querySelectorAll('.input-file');
@@ -50,12 +48,18 @@ class Admin extends React.Component {
 
   render() {
     let admin = null;
+    let form = null;
+    const { type } = this.props.params;
+    if (type === 'photos') form = <PhotoForm />;
+    else if (type === 'categories') form = <CategoryForm />;
+    else if (type === 'news') form = <ArticleForm />;
+
     if (this.props.auth) {
       admin = (
         <div>
           <Burger />
-          <Sidebar />
-          <PhotoForm />
+          <Sidebar route={this.props.params} />
+          {form}
         </div>
       );
     } else {

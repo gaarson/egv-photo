@@ -1,4 +1,4 @@
-import { ADMIN, AUTH } from "../consts";
+import { ADMIN, AUTH } from '../consts';
 
 export default {
   photosPending: categoryId => ({ type: ADMIN.PHOTOS_PENDING, categoryId }),
@@ -24,7 +24,7 @@ export default {
   addCategory: category => ({ type: ADMIN.ADD_CATEGORY, category }),
   addCategorySuccess: category => ({
     type: ADMIN.ADD_CATEGORY_SUCCESS,
-    category
+    category,
   }),
   addCategoryError: error => ({ type: ADMIN.ADD_CATEGORY_ERROR, error }),
 
@@ -37,5 +37,15 @@ export default {
 
   auth: admin => ({ type: AUTH.PENDING, admin }),
   authSuccess: () => ({ type: AUTH.SUCCESS }),
-  authError: error => ({ type: AUTH.ERROR, error })
+  authError: error => ({ type: AUTH.ERROR, error }),
+
+  newsPending: () => ({ type: ADMIN.NEWS_ERROR }),
+  newsSuccess: news => ({ type: ADMIN.NEWS_SUCCESS, news }),
+  newsError: error => ({ type: ADMIN.NEWS_ERROR, error }),
+
+  deleteArticle: id => ({ type: ADMIN.DELETE_ARTICLE, id }),
+  deleteArticleSuccess: () => ({ type: ADMIN.DELETE_ARTICLE_SUCCESS }),
+  deleteArticleError: error => ({ type: ADMIN.DELETE_ARTICLE_ERROR, error }),
+
+  editArticle: event => ({ type: ADMIN.EDIT_ARTIClE, event }),
 };

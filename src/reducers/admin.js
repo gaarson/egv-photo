@@ -1,80 +1,94 @@
-import { ADMIN } from "../consts";
+import { ADMIN } from '../consts';
 
 const arr = [
   {
     id: 0,
-    src: "/img/1.jpg",
-    title: "name",
-    caption: "asfsasaf",
+    src: '/img/1.jpg',
+    title: 'name',
+    caption: 'asfsasaf',
     width: 800,
-    height: 400
+    height: 400,
   },
   {
     id: 1,
-    src: "/img/2.jpg",
-    title: "name",
-    caption: "asfsasaf",
+    src: '/img/2.jpg',
+    title: 'name',
+    caption: 'asfsasaf',
     width: 600,
-    height: 400
+    height: 400,
   },
   {
     id: 2,
-    src: "/img/3.jpg",
-    title: "name",
-    caption: "asfsasaf",
+    src: '/img/3.jpg',
+    title: 'name',
+    caption: 'asfsasaf',
     width: 800,
-    height: 400
+    height: 400,
   },
   {
     id: 3,
-    src: "/img/4.png",
-    title: "name",
-    caption: "asfsasaf",
+    src: '/img/4.png',
+    title: 'name',
+    caption: 'asfsasaf',
     width: 800,
-    height: 400
+    height: 400,
   },
   {
     id: 4,
-    src: "/img/5.jpg",
-    title: "name",
-    caption: "asfsasaf",
+    src: '/img/5.jpg',
+    title: 'name',
+    caption: 'asfsasaf',
     width: 800,
-    height: 400
-  }
+    height: 400,
+  },
 ];
 
 const categories = [
   {
     id: 1,
-    title: "Свадьбы",
-    pic: "/img/5.jpg",
-    active: false
+    title: 'Свадьбы',
+    pic: '/img/5.jpg',
+    active: false,
   },
   {
     id: 2,
-    title: "Корпоративы",
-    pic: "/img/3.jpg",
-    active: true
+    title: 'Корпоративы',
+    pic: '/img/3.jpg',
+    active: true,
   },
   {
     id: 3,
-    title: "Сессии",
-    pic: "/img/1.jpg",
-    active: false
+    title: 'Сессии',
+    pic: '/img/1.jpg',
+    active: false,
   },
   {
     id: 4,
-    title: "Природа",
-    pic: "/img/2.jpg",
-    active: false
+    title: 'Природа',
+    pic: '/img/2.jpg',
+    active: false,
   },
   {
     id: 54,
-    title: "Фотосеты",
-    pic: "/img/1.jpg",
-    active: false
-  }
+    title: 'Фотосеты',
+    pic: '/img/1.jpg',
+    active: false,
+  },
 ];
+
+export const adminNews = (state = [], action) => {
+  switch (action.type) {
+    default:
+      return state || [];
+  }
+};
+
+export const editArticle = (state = {}, action) => {
+  switch (action.type) {
+    default:
+      return state || {};
+  }
+};
 
 export const adminPhotos = (state = arr, action) => {
   switch (action.type) {
@@ -89,12 +103,12 @@ export const adminPhotos = (state = arr, action) => {
 
 export const editPhoto = (
   state = {
-    src: "",
-    caption: "",
-    name: "",
-    id: null
+    src: '',
+    caption: '',
+    name: '',
+    id: null,
   },
-  action
+  action,
 ) => {
   switch (action.type) {
     case ADMIN.GET_PHOTO_SUCCESS:
@@ -112,10 +126,10 @@ export const editPhoto = (
 export const editCategory = (
   state = {
     id: null,
-    title: "",
-    pic: ""
+    title: '',
+    src: '',
   },
-  action
+  action,
 ) => {
   switch (action.type) {
     case ADMIN.ADD_CATEGORY_SUCCESS:

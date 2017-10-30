@@ -1,6 +1,13 @@
 import { mainPhotos, mainSections, feedback } from './main_screen';
 import { galleryCategories, galleryPhotos, ligthBox } from './gallery';
-import { adminPhotos, adminCategories, editPhoto } from './admin';
+import {
+  adminPhotos,
+  adminCategories,
+  editPhoto,
+  editCategory,
+  adminNews,
+  editArticle,
+} from './admin';
 import { news, article } from './blog';
 import auth from './auth';
 
@@ -9,6 +16,9 @@ export default {
   adminPhotos,
   adminCategories,
   editPhoto,
+  editCategory,
+  adminNews,
+  editArticle,
   mainSections,
   mainPhotos,
   feedback,

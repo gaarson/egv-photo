@@ -5,9 +5,10 @@ import Header from './header/Header';
 import Footer from './footer/Footer';
 import Main from './main/Main';
 import Gallery from './gallery/Gallery';
-import Admin from './admin/Admin';
 import Blog from './blog/Blog';
 import Article from './blog/article/Article';
+import Prices from './prices/Prices';
+import Admin from './admin/Admin';
 
 const routes = [
   {
@@ -29,6 +30,16 @@ const routes = [
     path: '/admin',
     exact: true,
     main: Admin,
+  },
+  {
+    path: '/admin/:type',
+    exact: true,
+    main: Admin,
+  },
+  {
+    path: '/prices',
+    exact: true,
+    main: Prices,
   },
   {
     path: '/news',

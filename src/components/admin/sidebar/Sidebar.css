@@ -1,3 +1,7 @@
 .delete-photo {
   cursor: pointer;
 }
+
+.change li {
+  color: #fff;
+}

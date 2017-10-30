@@ -1,18 +1,19 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import Actions from "../../../actions";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { admin } from '../../../actions';
 
 const mapStateToProps = ({ editCategory }) => ({ editCategory });
 
 const mapDispatchToProps = dispatch => ({
-  fillForm: e => dispatch(Actions.admin.fillCategoryForm(e.target)),
-  addCategory: () => dispatch(Actions.admin.addCategory()),
-  uploadImage: () => dispatch(Actions.admin.uploadPhoto())
+  fillForm: e => dispatch(admin.fillCategoryForm(e.target)),
+  addCategory: () => dispatch(admin.addCategory()),
+  uploadImage: () => dispatch(admin.uploadPhoto()),
 });
 
 const CategoryForm = ({ editCategory, fillForm, addCategory, uploadImage }) => (
   <section className="download">
+    {console.log(editCategory)}
     <div className="download-form">
       <div
         className="download-photo"
@@ -56,10 +57,10 @@ const CategoryForm = ({ editCategory, fillForm, addCategory, uploadImage }) => (
 );
 
 CategoryForm.propTypes = {
-  addCategory: PropTypes.func,
-  fillForm: PropTypes.func,
-  uploadImage: PropTypes.func,
-  editCategory: PropTypes.object
+  addCategory: PropTypes.func.isRequired,
+  fillForm: PropTypes.func.isRequired,
+  uploadImage: PropTypes.func.isRequired,
+  editCategory: PropTypes.object.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(CategoryForm);
