@@ -107,17 +107,22 @@ export const editPhoto = (
     caption: '',
     name: '',
     id: null,
+    photo: null,
   },
   action,
 ) => {
   switch (action.type) {
+    case ADMIN.UPLOAD_PHOTO:
+      return {
+        ...state,
+        photo: new FormData().append('newpic', action.photo),
+      };
     case ADMIN.GET_PHOTO_SUCCESS:
       return state;
     case ADMIN.UPDATE_PHOTO_SUCCESS:
       return state;
     case ADMIN.FILL_PHOTO_FORM:
-      console.log(action);
-      return state;
+      return { ...state, [action.event.id]: action.event.value };
     default:
       return state || {};
   }

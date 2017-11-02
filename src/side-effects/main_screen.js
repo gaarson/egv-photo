@@ -1,12 +1,12 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import request from 'superagent';
+import { agent } from './admin.js';
 
 import { MAIN } from '../consts';
 import { mainScreen } from '../actions';
 
 function* dispatchFeedback({ feedback }) {
   try {
-    yield call(request.post('/api/main/feedback').send({ feedback }));
+    yield call(agent.post('/api/main/feedback').send({ feedback }));
     yield put(mainScreen.success('send'));
   } catch (error) {
     yield put(mainScreen.error(error));
@@ -15,16 +15,17 @@ function* dispatchFeedback({ feedback }) {
 
 function* fetchMainPhotos({ section }) {
   try {
-    const photos = yield call(request.get('/api/main').query({ section }));
-    yield put(mainScreen.success(photos));
+    const photos = yield agent.get('/api/main').query({ section });
+    yield put(mainScreen.success(photos.body));
   } catch (error) {
+    console.log(error);
     yield put(mainScreen.error(error));
   }
 }
 
 function* fetchFreshNews() {
   try {
-    const news = yield call(request.get('/api/main/news'));
+    const news = yield call(agent.get('/api/main/news'));
     yield put(mainScreen.newsSuccess(news));
   } catch (error) {
     yield put(mainScreen.newsError(error));

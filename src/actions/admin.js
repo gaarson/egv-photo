@@ -13,11 +13,11 @@ export default {
   deletePhotoSuccess: photo => ({ type: ADMIN.DELETE_PHOTO_SUCCESS, photo }),
   deletePhotoError: error => ({ type: ADMIN.DELETE_PHOTO_ERROR, error }),
 
-  uploadPhoto: photoId => ({ type: ADMIN.UPLOAD_PHOTO, photoId }),
+  uploadPhoto: photo => ({ type: ADMIN.UPLOAD_PHOTO, photo }),
   uploadPhotoSuccess: photo => ({ type: ADMIN.UPLOAD_PHOTO_SUCCESS, photo }),
   uploadPhotoError: error => ({ type: ADMIN.UPLOAD_PHOTO_ERROR, error }),
 
-  updatePhoto: photoId => ({ type: ADMIN.UPDATE_PHOTO, photoId }),
+  updatePhoto: info => ({ type: ADMIN.UPDATE_PHOTO, info }),
   updatePhotoSuccess: photo => ({ type: ADMIN.UPDATE_PHOTO_SUCCESS, photo }),
   updatePhotoError: error => ({ type: ADMIN.UPDATE_PHOTO_ERROR, error }),
 

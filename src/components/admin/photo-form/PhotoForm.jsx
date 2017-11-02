@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Actions from '../../../actions';
+import { admin } from '../../../actions';
 
 const mapStateToProps = ({ editPhoto }) => ({ editPhoto });
 
 const mapDispatchToProps = dispatch => ({
-  fillForm: e => dispatch(Actions.admin.fiilForm(e.target)),
-  uploadImage: event =>
-    dispatch(Actions.admin.uploadPhoto(event.target.files[0])),
-  addPhoto: () => dispatch(Actions.admin.updatePhoto()),
+  fillForm: e => dispatch(admin.fillForm(e.target)),
+  uploadImage: event => dispatch(admin.uploadPhoto(event.target.files[0])),
+  addPhoto: info => dispatch(admin.updatePhoto(info)),
 });
 
 const PhotoForm = ({ editPhoto, fillForm, addPhoto, uploadImage }) => (
@@ -48,13 +47,13 @@ const PhotoForm = ({ editPhoto, fillForm, addPhoto, uploadImage }) => (
         placeholder="Описание"
       />
       <select name="" id="" onChange={fillForm}>
-        <option value="">Категория 1</option>
-        <option value="">Категория 2</option>
-        <option value="">Категория 3</option>
-        <option value="">Категория 4</option>
+        <option value="1">Категория 1</option>
+        <option value="2">Категория 2</option>
+        <option value="3">Категория 3</option>
+        <option value="4">Категория 4</option>
       </select>
       <div className="download-btn">
-        <a className="btn-form" onClick={addPhoto}>
+        <a className="btn-form" onClick={() => addPhoto(editPhoto)}>
           Загрузить
         </a>
       </div>
@@ -63,10 +62,10 @@ const PhotoForm = ({ editPhoto, fillForm, addPhoto, uploadImage }) => (
 );
 
 PhotoForm.propTypes = {
-  addPhoto: PropTypes.func,
-  fillForm: PropTypes.func,
-  uploadImage: PropTypes.func,
-  editPhoto: PropTypes.object,
+  addPhoto: PropTypes.func.isRequired,
+  fillForm: PropTypes.func.isRequired,
+  uploadImage: PropTypes.func.isRequired,
+  editPhoto: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PhotoForm);

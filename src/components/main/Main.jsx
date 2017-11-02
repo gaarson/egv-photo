@@ -1,11 +1,18 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { mainScreen } from '../../actions';
 
 import Section from './section/Section';
 import Feedback from './feedback/Feedback';
 import Photos from './photos/Photos';
 
+const mapDispatchToProps = dispatch => ({
+  getMainPhotos: () => dispatch(mainScreen.pending()),
+});
+
 class Main extends React.Component {
   componentDidMount() {
+    this.props.getMainPhotos();
     const { $ } = window;
 
     $(document).ready(() => {
@@ -81,4 +88,4 @@ class Main extends React.Component {
   }
 }
 
-export default Main;
+export default connect(null, mapDispatchToProps)(Main);
