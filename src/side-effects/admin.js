@@ -6,13 +6,15 @@ import use from 'superagent-use';
 import { ADMIN } from '../consts';
 import { admin } from '../actions';
 
-export const agent = use(request);
+const agent = use(request);
 
 agent.use(prefix('http://127.0.0.1:3030'));
 
-function* fetchUploadPhoto({ data }) {
+function* fetchUploadPhoto({ photo }) {
   try {
-    const success = yield agent.post('/api/photos').send({ test: 'asdasd' });
+    console.log(photo);
+    const success = yield agent.post('/api/photos').send(photo);
+    console.log(success);
     yield put(admin.uploadPhotoSuccess(success));
   } catch (error) {
     yield put(admin.uploadPhotoError(error));
@@ -21,16 +23,15 @@ function* fetchUploadPhoto({ data }) {
 
 function* fetchUplaodPhotoInfo({ info }) {
   try {
-    const photo = yield agent
-      .post('/api/photos')
-      .send({ test: 'test from client' });
-    console.log(photo);
+    console.log(info);
+    const photo = yield agent.post('/api/photos').send(info);
     yield put(admin.updatePhotoSuccess(photo));
   } catch (error) {
     yield put(admin.uploadPhotoError(error));
   }
 }
 
+export { agent };
 export function* watchUploadPhoto() {
   yield takeLatest(ADMIN.UPLOAD_PHOTO, fetchUploadPhoto);
 }

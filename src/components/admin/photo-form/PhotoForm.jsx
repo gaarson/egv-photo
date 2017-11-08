@@ -7,11 +7,13 @@ const mapStateToProps = ({ editPhoto }) => ({ editPhoto });
 
 const mapDispatchToProps = dispatch => ({
   fillForm: e => dispatch(admin.fillForm(e.target)),
-  uploadImage: event => dispatch(admin.uploadPhoto(event.target.files[0])),
-  addPhoto: info => dispatch(admin.updatePhoto(info)),
+  addPhoto: info => {
+    dispatch(admin.updatePhoto(info));
+    dispatch(admin.uploadPhoto(info.file));
+  },
 });
 
-const PhotoForm = ({ editPhoto, fillForm, addPhoto, uploadImage }) => (
+const PhotoForm = ({ editPhoto, fillForm, addPhoto }) => (
   <section className="download">
     <div className="download-form">
       <div
@@ -22,7 +24,7 @@ const PhotoForm = ({ editPhoto, fillForm, addPhoto, uploadImage }) => (
         type="file"
         name="file"
         id="file"
-        onChange={uploadImage}
+        onChange={fillForm}
         className="input-file"
         data-multiple-caption="{count} files selected"
         multiple
@@ -64,7 +66,6 @@ const PhotoForm = ({ editPhoto, fillForm, addPhoto, uploadImage }) => (
 PhotoForm.propTypes = {
   addPhoto: PropTypes.func.isRequired,
   fillForm: PropTypes.func.isRequired,
-  uploadImage: PropTypes.func.isRequired,
   editPhoto: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
