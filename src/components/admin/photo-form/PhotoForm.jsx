@@ -8,8 +8,10 @@ const mapStateToProps = ({ editPhoto }) => ({ editPhoto });
 const mapDispatchToProps = dispatch => ({
   fillForm: e => dispatch(admin.fillForm(e.target)),
   addPhoto: info => {
-    dispatch(admin.updatePhoto(info));
-    dispatch(admin.uploadPhoto(info.file));
+    const file = new FormData();
+    Object.keys(info).forEach(key => file.append(key, info[key]));
+
+    dispatch(admin.uploadPhoto(file));
   },
 });
 
@@ -48,7 +50,7 @@ const PhotoForm = ({ editPhoto, fillForm, addPhoto }) => (
         rows="3"
         placeholder="Описание"
       />
-      <select name="" id="" onChange={fillForm}>
+      <select name="" id="category_id" onChange={fillForm}>
         <option value="1">Категория 1</option>
         <option value="2">Категория 2</option>
         <option value="3">Категория 3</option>

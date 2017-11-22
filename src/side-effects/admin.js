@@ -12,22 +12,19 @@ agent.use(prefix('http://127.0.0.1:3030'));
 
 function* fetchUploadPhoto({ photo }) {
   try {
-    console.log(photo);
     const success = yield agent.post('/api/photos').send(photo);
-    console.log(success);
     yield put(admin.uploadPhotoSuccess(success));
   } catch (error) {
     yield put(admin.uploadPhotoError(error));
   }
 }
 
-function* fetchUplaodPhotoInfo({ info }) {
+function* fetchUploadCategory({ info }) {
   try {
-    console.log(info);
-    const photo = yield agent.post('/api/photos').send(info);
-    yield put(admin.updatePhotoSuccess(photo));
+    const category = yield agent.post('/api/categories').send(info);
+    yield put(admin.addCategorySuccess(category));
   } catch (error) {
-    yield put(admin.uploadPhotoError(error));
+    yield put(admin.addCategoryError(error));
   }
 }
 
@@ -35,6 +32,6 @@ export { agent };
 export function* watchUploadPhoto() {
   yield takeLatest(ADMIN.UPLOAD_PHOTO, fetchUploadPhoto);
 }
-export function* watchUploadPhotoInfo() {
-  yield takeLatest(ADMIN.UPDATE_PHOTO, fetchUplaodPhotoInfo);
+export function* watchUploadCategory() {
+  yield takeLatest(ADMIN.ADD_CATEGORY, fetchUploadCategory);
 }

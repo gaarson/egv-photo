@@ -7,11 +7,15 @@ const mapStateToProps = ({ editCategory }) => ({ editCategory });
 
 const mapDispatchToProps = dispatch => ({
   fillForm: e => dispatch(admin.fillCategoryForm(e.target)),
-  addCategory: () => dispatch(admin.addCategory()),
-  uploadImage: () => dispatch(admin.uploadPhoto()),
+  addCategory: info => {
+    const file = new FormData();
+    Object.keys(info).forEach(key => file.append(key, info[key]));
+
+    dispatch(admin.uploadPhoto(file));
+  },
 });
 
-const CategoryForm = ({ editCategory, fillForm, addCategory, uploadImage }) => (
+const CategoryForm = ({ editCategory, fillForm, addCategory }) => (
   <section className="download">
     {console.log(editCategory)}
     <div className="download-form">
@@ -23,7 +27,7 @@ const CategoryForm = ({ editCategory, fillForm, addCategory, uploadImage }) => (
         type="file"
         name="file"
         id="file"
-        onChange={uploadImage}
+        onChange={fillForm}
         className="input-file"
         data-multiple-caption="{count} files selected"
         multiple
@@ -48,7 +52,7 @@ const CategoryForm = ({ editCategory, fillForm, addCategory, uploadImage }) => (
         placeholder="Описание"
       />
       <div className="download-btn">
-        <a className="btn-form" onClick={addCategory}>
+        <a className="btn-form" onClick={() => addCategory(editCategory)}>
           Загрузить
         </a>
       </div>

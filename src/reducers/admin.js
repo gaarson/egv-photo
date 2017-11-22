@@ -119,8 +119,7 @@ export const editPhoto = (
     case ADMIN.FILL_PHOTO_FORM: {
       let val = null;
       if (action.event.files) {
-        val = new FormData();
-        val.append('newpic', action.event.files[0]);
+        [val] = action.event.files;
       } else {
         val = action.event.value;
       }
@@ -136,14 +135,22 @@ export const editCategory = (
     id: null,
     title: '',
     src: '',
+    file: null,
   },
   action,
 ) => {
   switch (action.type) {
     case ADMIN.ADD_CATEGORY_SUCCESS:
       return state;
-    case ADMIN.FILL_CATEGORY_FORM:
-      return state;
+    case ADMIN.FILL_CATEGORY_FORM: {
+      let val = null;
+      if (action.event.files) {
+        [val] = action.event.files;
+      } else {
+        val = action.event.value;
+      }
+      return { ...state, [action.event.id]: val };
+    }
     default:
       return state || {};
   }

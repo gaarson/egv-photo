@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import { admin, gallery } from '../../actions';
+
 import Sidebar from './sidebar/Sidebar';
 import Burger from './burger/Burger';
 import Auth from './auth/Auth';
@@ -10,6 +12,11 @@ import CategoryForm from './category-form/CategoryForm';
 import ArticleForm from './article-form/ArticleForm';
 
 const mapStateToProps = ({ auth }, { match: { params } }) => ({ auth, params });
+
+const mapDispatchToProps = dispatch => ({
+  getCategories: () => dispatch(gallery.categoriesPending()),
+  getPhotos: () => dispatch(admin.photosPending()),
+});
 
 class Admin extends React.Component {
   componentDidMount() {
@@ -21,13 +28,15 @@ class Admin extends React.Component {
       const labelVal = label.innerHTML;
 
       input.addEventListener('change', function(e) {
-        var fileName = '';
-        if (this.files && this.files.length > 1)
+        let fileName = '';
+        if (this.files && this.files.length > 1) {
           fileName = (this.getAttribute('data-multiple-caption') || '').replace(
             '{count}',
             this.files.length,
           );
-        else fileName = e.target.value.split('\\').pop();
+        } else {
+          fileName = e.target.value.split('\\').pop();
+        }
 
         if (fileName) label.querySelector('span').innerHTML = fileName;
         else label.innerHTML = labelVal;
@@ -71,6 +80,8 @@ class Admin extends React.Component {
 
 Admin.propTypes = {
   auth: PropTypes.string.isRequired,
+  getCategories: PropTypes.func.isRequired,
+  getPhoto: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps)(Admin);
+export default connect(mapStateToProps, mapDispatchToProps)(Admin);

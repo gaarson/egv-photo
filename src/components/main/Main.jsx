@@ -13,6 +13,7 @@ const mapDispatchToProps = dispatch => ({
 class Main extends React.Component {
   componentDidMount() {
     this.props.getMainPhotos();
+
     const { $ } = window;
 
     $(document).ready(() => {
