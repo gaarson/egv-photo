@@ -3,7 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { admin } from '../../../actions';
 
-const mapStateToProps = ({ editPhoto }) => ({ editPhoto });
+const mapStateToProps = ({ editPhoto, adminCategories }) => ({
+  editPhoto,
+  adminCategories,
+});
 
 const mapDispatchToProps = dispatch => ({
   fillForm: e => dispatch(admin.fillForm(e.target)),
@@ -15,7 +18,7 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const PhotoForm = ({ editPhoto, fillForm, addPhoto }) => (
+const PhotoForm = ({ editPhoto, fillForm, addPhoto, adminCategories }) => (
   <section className="download">
     <div className="download-form">
       <div
@@ -51,10 +54,11 @@ const PhotoForm = ({ editPhoto, fillForm, addPhoto }) => (
         placeholder="Описание"
       />
       <select name="" id="category_id" onChange={fillForm}>
-        <option value="1">Категория 1</option>
-        <option value="2">Категория 2</option>
-        <option value="3">Категория 3</option>
-        <option value="4">Категория 4</option>
+        {adminCategories.map(category => (
+          <option key={category.id} value={category.id}>
+            {category.title}
+          </option>
+        ))}
       </select>
       <div className="download-btn">
         <a className="btn-form" onClick={() => addPhoto(editPhoto)}>
@@ -69,6 +73,7 @@ PhotoForm.propTypes = {
   addPhoto: PropTypes.func.isRequired,
   fillForm: PropTypes.func.isRequired,
   editPhoto: PropTypes.objectOf(PropTypes.any).isRequired,
+  adminCategories: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PhotoForm);

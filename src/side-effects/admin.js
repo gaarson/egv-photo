@@ -28,7 +28,19 @@ function* fetchUploadCategory({ info }) {
   }
 }
 
+function* fetchAdminPhotos() {
+  try {
+    const photos = yield agent.get('/api/photos');
+    yield put(admin.photosSuccess(photos.body));
+  } catch (error) {
+    yield put(admin.photosError(error));
+  }
+}
+
 export { agent };
+export function* watchiFetchAdminPhotos() {
+  yield takeLatest(ADMIN.PHOTOS_PENDING, fetchAdminPhotos);
+}
 export function* watchUploadPhoto() {
   yield takeLatest(ADMIN.UPLOAD_PHOTO, fetchUploadPhoto);
 }

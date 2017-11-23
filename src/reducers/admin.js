@@ -1,47 +1,4 @@
-import { ADMIN } from '../consts';
-
-const arr = [
-  {
-    id: 0,
-    src: '/img/1.jpg',
-    title: 'name',
-    caption: 'asfsasaf',
-    width: 800,
-    height: 400,
-  },
-  {
-    id: 1,
-    src: '/img/2.jpg',
-    title: 'name',
-    caption: 'asfsasaf',
-    width: 600,
-    height: 400,
-  },
-  {
-    id: 2,
-    src: '/img/3.jpg',
-    title: 'name',
-    caption: 'asfsasaf',
-    width: 800,
-    height: 400,
-  },
-  {
-    id: 3,
-    src: '/img/4.png',
-    title: 'name',
-    caption: 'asfsasaf',
-    width: 800,
-    height: 400,
-  },
-  {
-    id: 4,
-    src: '/img/5.jpg',
-    title: 'name',
-    caption: 'asfsasaf',
-    width: 800,
-    height: 400,
-  },
-];
+import { ADMIN, GALLERY } from '../consts';
 
 const categories = [
   {
@@ -90,12 +47,12 @@ export const editArticle = (state = {}, action) => {
   }
 };
 
-export const adminPhotos = (state = arr, action) => {
+export const adminPhotos = (state, action) => {
   switch (action.type) {
     case ADMIN.DELETE_PHOTO_SUCCESS:
       return state;
     case ADMIN.PHOTOS_SUCCESS:
-      return state;
+      return action.data;
     default:
       return state || [];
   }
@@ -106,6 +63,7 @@ export const editPhoto = (
     src: '',
     caption: '',
     name: '',
+    category_id: 1,
     id: null,
     file: null,
   },
@@ -156,8 +114,10 @@ export const editCategory = (
   }
 };
 
-export const adminCategories = (state = categories, action) => {
+export const adminCategories = (state = [], action) => {
   switch (action.type) {
+    case GALLERY.CATEGORIES_SUCCESS:
+      return action.data;
     case ADMIN.ADD_CATEGORY_SUCCESS:
       return state;
     case ADMIN.REMOVE_CATEGORY_SUCCESS:

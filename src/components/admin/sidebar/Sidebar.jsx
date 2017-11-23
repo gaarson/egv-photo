@@ -40,7 +40,7 @@ const Sidebar = ({
     list = adminNews;
     del = deleteArticle;
   }
-
+  console.log(list);
   return (
     <aside className="catalog catalog-js">
       <div className="close close-js">

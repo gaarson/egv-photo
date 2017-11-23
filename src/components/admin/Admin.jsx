@@ -20,14 +20,17 @@ const mapDispatchToProps = dispatch => ({
 
 class Admin extends React.Component {
   componentDidMount() {
+    this.props.getPhotos();
+    this.props.getCategories();
+
     const { $ } = window;
     const inputs = document.querySelectorAll('.input-file');
 
-    Array.prototype.forEach.call(inputs, function(input) {
+    Array.prototype.forEach.call(inputs, function cb(input) {
       const label = input.nextElementSibling;
       const labelVal = label.innerHTML;
 
-      input.addEventListener('change', function(e) {
+      input.addEventListener('change', function cb1(e) {
         let fileName = '';
         if (this.files && this.files.length > 1) {
           fileName = (this.getAttribute('data-multiple-caption') || '').replace(
@@ -81,7 +84,7 @@ class Admin extends React.Component {
 Admin.propTypes = {
   auth: PropTypes.string.isRequired,
   getCategories: PropTypes.func.isRequired,
-  getPhoto: PropTypes.func.isRequired,
+  getPhotos: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Admin);

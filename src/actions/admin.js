@@ -1,7 +1,7 @@
 import { ADMIN, AUTH } from '../consts';
 
 export default {
-  photosPending: categoryId => ({ type: ADMIN.PHOTOS_PENDING, categoryId }),
+  photosPending: () => ({ type: ADMIN.PHOTOS_PENDING }),
   photosSuccess: data => ({ type: ADMIN.PHOTOS_SUCCESS, data }),
   photosError: error => ({ type: ADMIN.PHOTOS_ERROR, error }),
 
