@@ -1,38 +1,5 @@
 import { ADMIN, GALLERY } from '../consts';
 
-const categories = [
-  {
-    id: 1,
-    title: 'Свадьбы',
-    pic: '/img/5.jpg',
-    active: false,
-  },
-  {
-    id: 2,
-    title: 'Корпоративы',
-    pic: '/img/3.jpg',
-    active: true,
-  },
-  {
-    id: 3,
-    title: 'Сессии',
-    pic: '/img/1.jpg',
-    active: false,
-  },
-  {
-    id: 4,
-    title: 'Природа',
-    pic: '/img/2.jpg',
-    active: false,
-  },
-  {
-    id: 54,
-    title: 'Фотосеты',
-    pic: '/img/1.jpg',
-    active: false,
-  },
-];
-
 export const adminNews = (state = [], action) => {
   switch (action.type) {
     default:
@@ -91,7 +58,8 @@ export const editPhoto = (
 export const editCategory = (
   state = {
     id: null,
-    title: '',
+    name: '',
+    caption: '',
     src: '',
     file: null,
   },

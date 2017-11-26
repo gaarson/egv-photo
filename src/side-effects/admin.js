@@ -19,10 +19,11 @@ function* fetchUploadPhoto({ photo }) {
   }
 }
 
-function* fetchUploadCategory({ info }) {
+function* fetchUploadCategory({ category }) {
   try {
-    const category = yield agent.post('/api/categories').send(info);
-    yield put(admin.addCategorySuccess(category));
+    console.log(category);
+    const cat = yield agent.post('/api/categories').send(category);
+    yield put(admin.addCategorySuccess(cat));
   } catch (error) {
     yield put(admin.addCategoryError(error));
   }

@@ -11,7 +11,7 @@ const mapDispatchToProps = dispatch => ({
     const file = new FormData();
     Object.keys(info).forEach(key => file.append(key, info[key]));
 
-    dispatch(admin.uploadPhoto(file));
+    dispatch(admin.addCategory(file));
   },
 });
 
@@ -63,7 +63,6 @@ const CategoryForm = ({ editCategory, fillForm, addCategory }) => (
 CategoryForm.propTypes = {
   addCategory: PropTypes.func.isRequired,
   fillForm: PropTypes.func.isRequired,
-  uploadImage: PropTypes.func.isRequired,
   editCategory: PropTypes.object.isRequired,
 };
 
