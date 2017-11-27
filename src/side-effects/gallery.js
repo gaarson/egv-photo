@@ -1,12 +1,16 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { agent } from './admin.js';
 
+import { agent } from './admin.js';
+import isEmpty from './utils';
 import { GALLERY } from '../consts';
 import { gallery } from '../actions';
 
 function* fetchCategories() {
   try {
     const categories = yield agent.get('/api/categories');
+
+    if (isEmpty(categories.body)) categories.body = [];
+
     yield put(gallery.categoriesSuccess(categories.body));
   } catch (error) {
     yield put(gallery.categoriesError(error));

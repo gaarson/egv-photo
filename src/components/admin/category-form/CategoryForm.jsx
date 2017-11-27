@@ -17,7 +17,6 @@ const mapDispatchToProps = dispatch => ({
 
 const CategoryForm = ({ editCategory, fillForm, addCategory }) => (
   <section className="download">
-    {console.log(editCategory)}
     <div className="download-form">
       <div
         className="download-photo"

@@ -9,7 +9,7 @@ export default {
   getPhotoSuccess: photo => ({ type: ADMIN.GET_PHOTO_SUCCESS, photo }),
   getPhotoError: error => ({ type: ADMIN.GET_PHOTO_ERROR, error }),
 
-  deletePhoto: photoId => ({ type: ADMIN.DELETE_PHOTO, photoId }),
+  deletePhoto: photo => ({ type: ADMIN.DELETE_PHOTO, photo }),
   deletePhotoSuccess: photo => ({ type: ADMIN.DELETE_PHOTO_SUCCESS, photo }),
   deletePhotoError: error => ({ type: ADMIN.DELETE_PHOTO_ERROR, error }),
 
@@ -28,9 +28,9 @@ export default {
   }),
   addCategoryError: error => ({ type: ADMIN.ADD_CATEGORY_ERROR, error }),
 
-  removeCategory: categoryId => ({ type: ADMIN.REMOVE_CATEGORY, categoryId }),
-  removeCategorySuccess: () => ({ type: ADMIN.REMOVE_CATEGORY_SUCCESS }),
-  removeCategoryError: error => ({ type: ADMIN.REMOVE_CATEGORY_ERROR, error }),
+  deleteCategory: category => ({ type: ADMIN.DELETE_CATEGORY, category }),
+  deleteCategorySuccess: () => ({ type: ADMIN.DELETE_CATEGORY_SUCCESS }),
+  deleteCategoryError: error => ({ type: ADMIN.DELETE_CATEGORY_ERROR, error }),
 
   fillForm: event => ({ type: ADMIN.FILL_PHOTO_FORM, event }),
   fillCategoryForm: event => ({ type: ADMIN.FILL_CATEGORY_FORM, event }),

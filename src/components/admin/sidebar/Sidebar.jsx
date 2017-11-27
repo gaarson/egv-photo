@@ -13,9 +13,9 @@ const mapStateToProps = ({ adminPhotos, adminCategories, adminNews }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  deletePhoto: id => dispatch(admin.deletePhoto(id)),
-  deleteCategory: id => dispatch(admin.removeCategory(id)),
-  deleteArticle: id => dispatch(admin.deleteArticle(id)),
+  deletePhoto: photo => dispatch(admin.deletePhoto(photo)),
+  deleteCategory: category => dispatch(admin.deleteCategory(category)),
+  deleteArticle: article => dispatch(admin.deleteArticle(article)),
 });
 
 const Sidebar = ({
@@ -40,7 +40,7 @@ const Sidebar = ({
     list = adminNews;
     del = deleteArticle;
   }
-  console.log(list);
+
   return (
     <aside className="catalog catalog-js">
       <div className="close close-js">
@@ -62,7 +62,7 @@ const Sidebar = ({
           {list.map(item => (
             <li key={item.id}>
               <a>{item.title}</a>
-              <a className="delete-photo" onClick={() => del(item.id)}>
+              <a className="delete-photo" onClick={() => del(item)}>
                 &times;
               </a>
             </li>

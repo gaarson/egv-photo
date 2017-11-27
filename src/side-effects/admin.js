@@ -3,6 +3,7 @@ import request from 'superagent';
 import prefix from 'superagent-prefix';
 import use from 'superagent-use';
 
+import isEmpty from './utils';
 import { ADMIN } from '../consts';
 import { admin } from '../actions';
 
@@ -21,7 +22,6 @@ function* fetchUploadPhoto({ photo }) {
 
 function* fetchUploadCategory({ category }) {
   try {
-    console.log(category);
     const cat = yield agent.post('/api/categories').send(category);
     yield put(admin.addCategorySuccess(cat));
   } catch (error) {
@@ -32,19 +32,38 @@ function* fetchUploadCategory({ category }) {
 function* fetchAdminPhotos() {
   try {
     const photos = yield agent.get('/api/photos');
+
+    if (isEmpty(photos.body)) photos.body = [];
+
     yield put(admin.photosSuccess(photos.body));
   } catch (error) {
     yield put(admin.photosError(error));
   }
 }
 
+function* fetchDeletePhoto({ info }) {
+  try {
+    const success = yield agent.delete(`/api/photos/${info.id}`);
+    yield put(admin.deletePhotoSuccess(success));
+  } catch (error) {
+    yield put(admin.deletePhotoError(error));
+  }
+}
+
+function* fetchDeleteCategory({ category }) {
+  try {
+    const success = yield agent.delete(`/api/categories/${category.id}`);
+    yield put(admin.deleteCategorySuccess(success));
+  } catch (error) {
+    yield put(admin.deleteCategoryError(error));
+  }
+}
+
 export { agent };
-export function* watchiFetchAdminPhotos() {
-  yield takeLatest(ADMIN.PHOTOS_PENDING, fetchAdminPhotos);
-}
-export function* watchUploadPhoto() {
-  yield takeLatest(ADMIN.UPLOAD_PHOTO, fetchUploadPhoto);
-}
-export function* watchUploadCategory() {
+export function* watchFetchAdmin() {
   yield takeLatest(ADMIN.ADD_CATEGORY, fetchUploadCategory);
+  yield takeLatest(ADMIN.UPLOAD_PHOTO, fetchUploadPhoto);
+  yield takeLatest(ADMIN.PHOTOS_PENDING, fetchAdminPhotos);
+  yield takeLatest(ADMIN.DELETE_PHOTO, fetchDeletePhoto);
+  yield takeLatest(ADMIN.DELETE_CATEGORY, fetchDeleteCategory);
 }
