@@ -1,6 +1,6 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 
-import { agent } from './admin.js';
+import { agent } from './admin';
 import isEmpty from './utils';
 import { GALLERY } from '../consts';
 import { gallery } from '../actions';
@@ -17,20 +17,16 @@ function* fetchCategories() {
   }
 }
 
-function* fetchGalleryPhotos({ categoryId, page }) {
+function* fetchGalleryPhotos({ category, page }) {
   try {
-    const photos = yield call(
-      agent.get(`/api/photos/${categoryId}`).query({ page }),
-    );
+    const photos = yield agent.get(`/api/photos/${category}`).query({ page });
     yield put(gallery.success(photos));
   } catch (error) {
     yield put(gallery.error(error));
   }
 }
 
-export function* watchFetchGalleryPhotos() {
+export function* watchFetchGallery() {
   yield takeLatest(GALLERY.PHOTOS_PENDING, fetchGalleryPhotos);
-}
-export function* watchFetchCategories() {
   yield takeLatest(GALLERY.CATEGORIES_PENDING, fetchCategories);
 }

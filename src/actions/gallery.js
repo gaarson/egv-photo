@@ -8,7 +8,7 @@ export default {
   categoriesSuccess: data => ({ type: GALLERY.CATEGORIES_SUCCESS, data }),
   categoriesError: error => ({ type: GALLERY.CATEGORIES_ERROR, error }),
 
-  pending: category => ({ type: GALLERY.PHOTOS_PENDING, category }),
+  pending: (category, page) => ({ type: GALLERY.PHOTOS_PENDING, category, page }),
   success: data => ({ type: GALLERY.PHOTOS_SUCCESS, data }),
   error: error => ({ type: GALLERY.PHOTOS_ERROR, error }),
 

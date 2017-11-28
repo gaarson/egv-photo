@@ -1,7 +1,7 @@
 import { fork } from 'redux-saga/effects';
 
 import { watchFetchMainPhotos, watchDispatchFeedback } from './main_screen';
-import { watchFetchCategories, watchFetchGalleryPhotos } from './gallery';
+import { watchFetchGallery } from './gallery';
 import { watchFetchAdmin } from './admin';
 
 export default function* sagas() {
@@ -9,8 +9,7 @@ export default function* sagas() {
     fork(watchFetchMainPhotos),
     fork(watchDispatchFeedback),
 
-    fork(watchFetchCategories),
-    fork(watchFetchGalleryPhotos),
+    fork(watchFetchGallery),
 
     fork(watchFetchAdmin),
   ];

@@ -5,7 +5,7 @@ import Photos from 'react-photo-gallery';
 import LightBox from 'react-images';
 
 import Category from './categories/Category';
-import Actions from '../../actions';
+import { gallery } from '../../actions';
 
 import './Gallery.css';
 
@@ -20,16 +20,20 @@ const mapStateToProps = ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  move: e => dispatch(Actions.gallery.move(e)),
-  open: e => dispatch(Actions.gallery.open(e.target)),
-  close: () => dispatch(Actions.gallery.close()),
+  getCategories: () => dispatch(gallery.categoriesPending()),
+  getPhotos: (category) => dispatch(gallery.pending(category)),
+  move: e => dispatch(gallery.move(e)),
+  open: e => dispatch(gallery.open(e.target)),
+  close: () => dispatch(gallery.close()),
   change: (id) => {
-    dispatch(Actions.gallery.changeCategory(id));
-    dispatch(Actions.gallery.pending(id));
+    dispatch(gallery.changeCategory(id));
+    dispatch(gallery.pending(id));
   },
 });
 
-const Gallery = ({ 
+const Gallery = ({
+  getCategories,
+  getPhotos,
   galleryPhotos,
   galleryCategories,
   ligthBox,
@@ -69,13 +73,15 @@ const Gallery = ({
 );
 
 Gallery.propTypes = {
-  galleryCategories: PropTypes.array,
-  galleryPhotos: PropTypes.array,
-  ligthBox: PropTypes.object,
-  change: PropTypes.func,
-  close: PropTypes.func,
-  move: PropTypes.func,
-  open: PropTypes.func,
+  getCategories: PropTypes.func.isRequired,
+  getPhotos: PropTypes.func.isRequired,
+  galleryCategories: PropTypes.array.isRequired,
+  galleryPhotos: PropTypes.array.isRequired,
+  ligthBox: PropTypes.object.isRequired,
+  change: PropTypes.func.isRequired,
+  close: PropTypes.func.isRequired,
+  move: PropTypes.func.isRequired,
+  open: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Gallery);
