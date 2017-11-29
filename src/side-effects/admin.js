@@ -41,9 +41,12 @@ function* fetchAdminPhotos() {
   }
 }
 
-function* fetchDeletePhoto({ info }) {
+function* fetchDeletePhoto({ photo }) {
   try {
-    const success = yield agent.delete(`/api/photos/${info.id}`);
+    const success = yield agent.delete('/api/photos').query({
+      id: photo.id,
+      src: photo.src,
+    });
     yield put(admin.deletePhotoSuccess(success));
   } catch (error) {
     yield put(admin.deletePhotoError(error));
@@ -52,7 +55,10 @@ function* fetchDeletePhoto({ info }) {
 
 function* fetchDeleteCategory({ category }) {
   try {
-    const success = yield agent.delete(`/api/categories/${category.id}`);
+    const success = yield agent.delete('/api/categories').query({
+      id: category.id,
+      src: category.src,
+    });
     yield put(admin.deleteCategorySuccess(success));
   } catch (error) {
     yield put(admin.deleteCategoryError(error));
