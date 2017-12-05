@@ -1,6 +1,6 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const mapState = ({ mainPhotos }) => ({ photos: mainPhotos });
 
@@ -14,7 +14,6 @@ const Photos = ({ photos }) => (
             <a className="thumbnail" href="/gallery">
               <img src={item.src} alt="" />
             </a>
-            <h2>{item.caption}</h2>
           </article>
         ))}
       </div>

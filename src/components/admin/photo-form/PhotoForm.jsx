@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { admin } from '../../../actions';
 
+import './style.css';
+
 const mapStateToProps = ({ editPhoto, adminCategories }) => ({
   editPhoto,
   adminCategories,
@@ -60,6 +62,15 @@ const PhotoForm = ({ editPhoto, fillForm, addPhoto, adminCategories }) => (
           </option>
         ))}
       </select>
+      <label htmlFor="main" className="is-main-radio">
+        Для главной
+        <input
+          type="checkbox"
+          id="main"
+          value={editPhoto.main}
+          onChange={fillForm}
+        />
+      </label>
       <div className="download-btn">
         <a className="btn-form" onClick={() => addPhoto(editPhoto)}>
           Загрузить

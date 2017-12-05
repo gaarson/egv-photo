@@ -70,8 +70,12 @@ const arr = [
 export const mainSections = (state = defaultSections, action) => {
   switch (action.type) {
     case MAIN.PHOTOS_SUCCESS:
-      console.log(action.data);
-      return state;
+      return state.map((section, index) => {
+        const newSection = section;
+        newSection.photo = action.data[index].src;
+
+        return newSection;
+      });
     default:
       return state || [];
   }
@@ -80,8 +84,7 @@ export const mainSections = (state = defaultSections, action) => {
 export const mainPhotos = (state = arr, action) => {
   switch (action.type) {
     case MAIN.PHOTOS_SUCCESS:
-      console.log(action.data);
-      return state;
+      return action.data;
     default:
       return state || [];
   }

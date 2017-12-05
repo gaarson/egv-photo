@@ -18,6 +18,7 @@ export default (state, action) => {
       return console.log(action.error);
     case ADMIN.UPDATE_PHOTO_ERROR:
       return console.log(action.error);
-    default: return state || {};
+    default:
+      return state || {};
   }
 };

@@ -19,14 +19,15 @@ function* fetchCategories() {
 
 function* fetchGalleryPhotos({ category, page }) {
   try {
-    const photos = yield agent.get(`/api/photos/${category}`).query({ page });
+    const photos = yield agent.get('/api/photos/').query({ page, category });
+
     yield put(gallery.success(photos));
   } catch (error) {
     yield put(gallery.error(error));
   }
 }
 
-export function* watchFetchGallery() {
+export default function* watchFetchGallery() {
   yield takeLatest(GALLERY.PHOTOS_PENDING, fetchGalleryPhotos);
   yield takeLatest(GALLERY.CATEGORIES_PENDING, fetchCategories);
 }

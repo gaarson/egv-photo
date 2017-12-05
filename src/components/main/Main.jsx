@@ -6,6 +6,8 @@ import Section from './section/Section';
 import Feedback from './feedback/Feedback';
 import Photos from './photos/Photos';
 
+const mapStateToProps = ({ mainSections }) => ({ mainSections });
+
 const mapDispatchToProps = dispatch => ({
   getMainPhotos: () => dispatch(mainScreen.pending()),
 });
@@ -13,7 +15,6 @@ const mapDispatchToProps = dispatch => ({
 class Main extends React.Component {
   componentDidMount() {
     this.props.getMainPhotos();
-
     const { $ } = window;
 
     $(document).ready(() => {
@@ -78,10 +79,20 @@ class Main extends React.Component {
     });
   }
 
+  shouldComponentUpdate(prev, next) {
+    console.log(prev, next);
+    return true;
+  }
+
+  componentWillUpdate(prev, curr) {
+    console.log(prev, curr);
+  }
+
   render() {
+    console.log('comounent Update');
     return (
       <div>
-        <Section />
+        <Section mainSections={this.props.mainSections} />
         <Photos />
         <Feedback />
       </div>
@@ -89,4 +100,4 @@ class Main extends React.Component {
   }
 }
 
-export default connect(null, mapDispatchToProps)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(Main);

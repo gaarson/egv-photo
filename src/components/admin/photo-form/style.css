@@ -1,0 +1,10 @@
+.is-main-radio {
+  top: 20px;
+  position: relative;
+}
+
+.is-main-radio input {
+  position: absolute !important;
+  left: 110px !important;
+  top: 3px !important;
+}

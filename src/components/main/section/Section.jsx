@@ -1,9 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 import SectionButton from './SectionButton';
-
-const mapState = ({ mainSections }) => ({ mainSections });
 
 const Section = ({ mainSections }) =>
   mainSections.map(section => (
@@ -26,4 +23,4 @@ const Section = ({ mainSections }) =>
     </section>
   ));
 
-export default connect(mapState)(Section);
+export default Section;

@@ -59,6 +59,7 @@ function* fetchDeleteCategory({ category }) {
       id: category.id,
       src: category.src,
     });
+
     yield put(admin.deleteCategorySuccess(success));
   } catch (error) {
     yield put(admin.deleteCategoryError(error));

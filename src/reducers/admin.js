@@ -29,6 +29,7 @@ export const editPhoto = (
   state = {
     src: '',
     caption: '',
+    main: 0,
     name: '',
     category_id: 1,
     id: null,
@@ -45,6 +46,10 @@ export const editPhoto = (
       let val = null;
       if (action.event.files) {
         [val] = action.event.files;
+      } else if (
+        Object.prototype.hasOwnProperty.call(action.event, 'checked')
+      ) {
+        val = action.event.checked ? 1 : 0;
       } else {
         val = action.event.value;
       }
