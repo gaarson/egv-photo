@@ -17,7 +17,7 @@ const mapStateToProps = ({ galleryPhotos, galleryCategories, ligthBox }) => ({
 
 const mapDispatchToProps = dispatch => ({
   getCategories: () => dispatch(gallery.categoriesPending()),
-  getPhotos: category => dispatch(gallery.pending(category)),
+  getPhotos: (category, page) => dispatch(gallery.pending(category, page)),
   move: e => dispatch(gallery.move(e)),
   open: e => dispatch(gallery.open(e.target)),
   close: () => dispatch(gallery.close()),
@@ -29,7 +29,7 @@ const mapDispatchToProps = dispatch => ({
 
 class Gallery extends React.Component {
   componentDidMount() {
-    this.props.getPhotos(1);
+    this.props.getPhotos(1, 0);
     this.props.getCategories();
   }
 

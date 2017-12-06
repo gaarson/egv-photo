@@ -70,7 +70,8 @@ const categories = [
 export const galleryPhotos = (state = arr, action) => {
   switch (action.type) {
     case GALLERY.PHOTOS_SUCCESS:
-      return action.data;
+      // return action.data;
+      return state;
     default:
       return state || [];
   }
@@ -78,7 +79,7 @@ export const galleryPhotos = (state = arr, action) => {
 
 export const galleryCategories = (state = categories, action) => {
   switch (action.type) {
-    case GALLERY.CATEGOGIES_SUCCESS:
+    case GALLERY.CATEGORIES_SUCCESS:
       return action.data;
     case GALLERY.CHANGE_CATEGORY:
       return state.map(
@@ -102,7 +103,6 @@ export const ligthBox = (
 ) => {
   switch (action.type) {
     case GALLERY.LIGHTBOX_OPEN:
-      console.log(action.event);
       return {
         ...state,
         open: true,

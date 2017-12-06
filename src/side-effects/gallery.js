@@ -19,9 +19,9 @@ function* fetchCategories() {
 
 function* fetchGalleryPhotos({ category, page }) {
   try {
-    const photos = yield agent.get('/api/photos/').query({ page, category });
+    const photos = yield agent.get('/api/photos').query({ category, page });
 
-    yield put(gallery.success(photos));
+    yield put(gallery.success(photos.body));
   } catch (error) {
     yield put(gallery.error(error));
   }
