@@ -51,7 +51,7 @@ class Gallery extends React.Component {
               key={cat.id}
               title={cat.title}
               change={() => change(cat.id)}
-              pic={cat.pic}
+              pic={cat.src}
               active={cat.active}
             />
           ))}

@@ -70,8 +70,7 @@ const categories = [
 export const galleryPhotos = (state = arr, action) => {
   switch (action.type) {
     case GALLERY.PHOTOS_SUCCESS:
-      // return action.data;
-      return state;
+      return action.data;
     default:
       return state || [];
   }
