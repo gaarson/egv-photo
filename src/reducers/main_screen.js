@@ -33,40 +33,6 @@ const defaultSections = [
   },
 ];
 
-const arr = [
-  {
-    id: 0,
-    src: '/img/1.jpg',
-    caption: 'asfsasaf',
-    width: 800,
-    height: 400,
-  },
-  {
-    id: 1,
-    src: '/img/2.jpg',
-    width: 600,
-    height: 400,
-  },
-  {
-    id: 2,
-    src: '/img/3.jpg',
-    width: 800,
-    height: 400,
-  },
-  {
-    id: 3,
-    src: '/img/4.png',
-    width: 800,
-    height: 400,
-  },
-  {
-    id: 4,
-    src: '/img/5.jpg',
-    width: 800,
-    height: 400,
-  },
-];
-
 export const mainSections = (state = defaultSections, action) => {
   switch (action.type) {
     case MAIN.PHOTOS_SUCCESS:
@@ -81,7 +47,7 @@ export const mainSections = (state = defaultSections, action) => {
   }
 };
 
-export const mainPhotos = (state = arr, action) => {
+export const mainPhotos = (state, action) => {
   switch (action.type) {
     case MAIN.PHOTOS_SUCCESS:
       return action.data;

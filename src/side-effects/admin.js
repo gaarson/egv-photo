@@ -9,8 +9,6 @@ import { admin } from '../actions';
 
 const agent = use(request);
 
-agent.use(prefix('http://127.0.0.1:3030'));
-
 function* fetchUploadPhoto({ photo }) {
   try {
     const success = yield agent.post('/api/photos').send(photo);
