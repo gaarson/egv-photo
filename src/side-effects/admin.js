@@ -1,13 +1,9 @@
 import { put, takeLatest } from 'redux-saga/effects';
-import request from 'superagent';
-import prefix from 'superagent-prefix';
-import use from 'superagent-use';
+import agent from './agent';
 
 import isEmpty from './utils';
 import { ADMIN } from '../consts';
 import { admin } from '../actions';
-
-const agent = use(request);
 
 function* fetchUploadPhoto({ photo }) {
   try {
@@ -64,7 +60,6 @@ function* fetchDeleteCategory({ category }) {
   }
 }
 
-export { agent };
 export function* watchFetchAdmin() {
   yield takeLatest(ADMIN.ADD_CATEGORY, fetchUploadCategory);
   yield takeLatest(ADMIN.UPLOAD_PHOTO, fetchUploadPhoto);

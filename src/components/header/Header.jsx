@@ -16,19 +16,21 @@ const Header = ({ location: { pathname } }) => (
       </li>
       <li className="navbar-itm">
         <Link to="#three" className="navbar-link">
-          Работы
+          Портфолио
         </Link>
       </li>
       <li className="navbar-itm">
         <Link to="#four" className="navbar-link">
-          Контакты
+          Обратаная связь
         </Link>
       </li>
-      <li className="navbar-itm">
-        <Link to="/news" className="navbar-link">
-          Последние новости
-        </Link>
-      </li>
+      {
+        // <li className="navbar-itm">
+        // <Link to="/news" className="navbar-link">
+        // Последние новости
+        // </Link>
+        // </li>
+      }
       <li className="navbar-itm">
         <Link to="/prices" className="navbar-link">
           Прайс-лист

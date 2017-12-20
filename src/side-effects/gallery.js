@@ -1,6 +1,6 @@
 import { put, takeLatest } from 'redux-saga/effects';
 
-import { agent } from './admin';
+import agent from './agent';
 import isEmpty from './utils';
 import { GALLERY } from '../consts';
 import { gallery } from '../actions';
@@ -19,9 +19,9 @@ function* fetchCategories() {
 
 function* fetchGalleryPhotos({ category, page }) {
   try {
-    const photos = yield agent.get('/api/photos').query({ category, page });
+    const { body } = yield agent.get('/api/photos').query({ category, page });
 
-    yield put(gallery.success(photos.body));
+    yield put(gallery.success(body));
   } catch (error) {
     yield put(gallery.error(error));
   }

@@ -34,7 +34,7 @@ export const ligthBox = (
   action,
 ) => {
   switch (action.type) {
-    case GALLERY.CATEGORIES_SUCCESS:
+    case GALLERY.PHOTOS_SUCCESS:
       return { ...state, images: action.data };
     case GALLERY.LIGHTBOX_OPEN:
       return {

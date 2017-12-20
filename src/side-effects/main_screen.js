@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
-import { agent } from './admin.js';
+import agent from './agent';
 
 import { MAIN } from '../consts';
 import { mainScreen } from '../actions';

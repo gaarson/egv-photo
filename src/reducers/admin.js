@@ -16,8 +16,11 @@ export const editArticle = (state = {}, action) => {
 
 export const adminPhotos = (state, action) => {
   switch (action.type) {
-    case ADMIN.DELETE_PHOTO_SUCCESS:
+    case ADMIN.DELETE_PHOTO_SUCCESS: {
+      console.log('deleting', action);
+
       return state;
+    }
     case ADMIN.PHOTOS_SUCCESS:
       return action.data;
     default:

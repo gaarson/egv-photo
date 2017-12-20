@@ -15,6 +15,7 @@ const mapDispatchToProps = dispatch => ({
 class Main extends React.Component {
   componentDidMount() {
     this.props.getMainPhotos();
+
     const { $ } = window;
 
     $(document).ready(() => {
@@ -79,17 +80,7 @@ class Main extends React.Component {
     });
   }
 
-  shouldComponentUpdate(prev, next) {
-    console.log(prev, next);
-    return true;
-  }
-
-  componentWillUpdate(prev, curr) {
-    console.log(prev, curr);
-  }
-
   render() {
-    console.log('comounent Update');
     return (
       <div>
         <Section mainSections={this.props.mainSections} />
