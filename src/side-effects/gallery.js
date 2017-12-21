@@ -7,11 +7,11 @@ import { gallery } from '../actions';
 
 function* fetchCategories() {
   try {
-    const categories = yield agent.get('/api/categories');
+    let { body } = yield agent.get('/api/categories');
 
-    if (isEmpty(categories.body)) categories.body = [];
+    if (isEmpty(body)) body = [];
 
-    yield put(gallery.categoriesSuccess(categories.body));
+    yield put(gallery.categoriesSuccess(body));
   } catch (error) {
     yield put(gallery.categoriesError(error));
   }
@@ -19,7 +19,9 @@ function* fetchCategories() {
 
 function* fetchGalleryPhotos({ category, page }) {
   try {
-    const { body } = yield agent.get('/api/photos').query({ category, page });
+    let { body } = yield agent.get('/api/photos').query({ category, page });
+
+    if (isEmpty(body)) body = [];
 
     yield put(gallery.success(body));
   } catch (error) {

@@ -133,6 +133,7 @@ a {
   bottom: 0; }
 
 .btn-form {
+  cursor: pointer;
   padding: 4px 10px;
   font-size: 16px;
   color: #676d79;
@@ -468,6 +469,7 @@ textarea {
   .catalog-content li {
     padding: 5px 0; }
   .catalog-content a {
+    cursor: pointer;
     color: #fff; }
 
 .delete-photo {
