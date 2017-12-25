@@ -42,6 +42,7 @@ const CategoryForm = ({ editCategory, fillForm, addCategory }) => (
         onChange={fillForm}
         placeholder="Заголовок"
       />
+
       <textarea
         name=""
         id="caption"
@@ -50,6 +51,7 @@ const CategoryForm = ({ editCategory, fillForm, addCategory }) => (
         rows="3"
         placeholder="Описание"
       />
+
       <div className="download-btn">
         <a className="btn-form" onClick={() => addCategory(editCategory)}>
           Загрузить

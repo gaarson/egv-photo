@@ -29,7 +29,10 @@ export default {
   addCategoryError: error => ({ type: ADMIN.ADD_CATEGORY_ERROR, error }),
 
   deleteCategory: category => ({ type: ADMIN.DELETE_CATEGORY, category }),
-  deleteCategorySuccess: () => ({ type: ADMIN.DELETE_CATEGORY_SUCCESS }),
+  deleteCategorySuccess: category => ({
+    type: ADMIN.DELETE_CATEGORY_SUCCESS,
+    category,
+  }),
   deleteCategoryError: error => ({ type: ADMIN.DELETE_CATEGORY_ERROR, error }),
 
   fillForm: event => ({ type: ADMIN.FILL_PHOTO_FORM, event }),

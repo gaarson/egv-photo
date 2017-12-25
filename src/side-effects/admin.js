@@ -7,8 +7,9 @@ import { admin } from '../actions';
 
 function* fetchUploadPhoto({ photo }) {
   try {
-    const success = yield agent.post('/api/photos').send(photo);
-    yield put(admin.uploadPhotoSuccess(success));
+    const { body } = yield agent.post('/api/photos').send(photo);
+
+    yield put(admin.uploadPhotoSuccess(body));
   } catch (error) {
     yield put(admin.uploadPhotoError(error));
   }
@@ -16,8 +17,9 @@ function* fetchUploadPhoto({ photo }) {
 
 function* fetchUploadCategory({ category }) {
   try {
-    const cat = yield agent.post('/api/categories').send(category);
-    yield put(admin.addCategorySuccess(cat));
+    const { body } = yield agent.post('/api/categories').send(category);
+
+    yield put(admin.addCategorySuccess(body));
   } catch (error) {
     yield put(admin.addCategoryError(error));
   }
@@ -37,11 +39,11 @@ function* fetchAdminPhotos() {
 
 function* fetchDeletePhoto({ photo }) {
   try {
-    const success = yield agent.delete('/api/photos').query({
+    const { body } = yield agent.delete('/api/photos').query({
       id: photo.id,
       src: photo.src,
     });
-    yield put(admin.deletePhotoSuccess(success));
+    yield put(admin.deletePhotoSuccess(body[0]));
   } catch (error) {
     yield put(admin.deletePhotoError(error));
   }
@@ -49,12 +51,12 @@ function* fetchDeletePhoto({ photo }) {
 
 function* fetchDeleteCategory({ category }) {
   try {
-    const success = yield agent.delete('/api/categories').query({
+    const { body } = yield agent.delete('/api/categories').query({
       id: category.id,
       src: category.src,
     });
 
-    yield put(admin.deleteCategorySuccess(success));
+    yield put(admin.deleteCategorySuccess(body[0]));
   } catch (error) {
     yield put(admin.deleteCategoryError(error));
   }

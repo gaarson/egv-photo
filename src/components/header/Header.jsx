@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import './style.css';
+
 const Header = ({ location: { pathname } }) => (
   <nav id="nav" style={{ display: pathname.search('admin') !== -1 && 'none' }}>
     <ul className="navbar">
@@ -38,7 +40,21 @@ const Header = ({ location: { pathname } }) => (
       </li>
     </ul>
     <h1 className="logo">
-      <Link to="/">sdsadsadsa</Link>
+      <Link to="/">Фотограф Евгений Жуков</Link>
+      <div className="socials-header">
+        <a
+          href="https://www.instagram.com/evg_zhukov/?hl=ru"
+          className="socials-itm-head"
+        >
+          <i className="fa fa-instagram" aria-hidden="true" />
+        </a>
+        <a href="/" className="socials-itm-head">
+          <i className="fa fa-facebook" aria-hidden="true" />
+        </a>
+        <a href="https://vk.com/id272427546" className="socials-itm-head">
+          <i className="fa fa-vk" aria-hidden="true" />
+        </a>
+      </div>
     </h1>
   </nav>
 );
