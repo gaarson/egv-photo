@@ -50,11 +50,11 @@ export const editPhoto = (
     case ADMIN.UPLOAD_PHOTO_SUCCESS:
       alert('Фото добавлено!');
       return {
+        ...state,
         src: '',
         caption: '',
         main: 1,
         name: '',
-        category_id: 1,
         id: null,
         file: null,
       };
