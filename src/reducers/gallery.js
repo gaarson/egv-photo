@@ -40,7 +40,7 @@ export const ligthBox = (
       return {
         ...state,
         open: true,
-        currentImage: +action.event.id,
+        currentImage: +action.event.id - 1,
       };
     case GALLERY.LIGHTBOX_CLOSE:
       return { ...state, open: false };
