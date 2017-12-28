@@ -1,6 +1,8 @@
 .socials-header {
   margin-left: 10px;
   display: inline-block;
+  position: relative;
+  bottom: 7px;
 }
 
 .socials-itm-head {

@@ -37,10 +37,11 @@ export const ligthBox = (
     case GALLERY.PHOTOS_SUCCESS:
       return { ...state, images: action.data };
     case GALLERY.LIGHTBOX_OPEN:
+      console.log(action);
       return {
         ...state,
         open: true,
-        currentImage: +action.event.id - 1,
+        currentImage: +action.event.index,
       };
     case GALLERY.LIGHTBOX_CLOSE:
       return { ...state, open: false };

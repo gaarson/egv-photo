@@ -2,14 +2,19 @@ import React from 'react';
 
 import SectionButton from './SectionButton';
 
+import './style.css';
+
 const Section = ({ mainSections }) =>
   mainSections.map(section => (
     <section
       key={section.number}
       id={section.number}
-      className={section.type}
-      style={{ background: `url(${section.photo})` }}
+      className={`${section.type}`}
     >
+      <div
+        className="slide-section"
+        style={{ background: `transparent url(${section.photo})` }}
+      />
       <div className={section.mainType}>
         <h2 className={`${section.mainType}-title`}>{section.title}</h2>
         <p className={`${section.mainType}-content`}>{section.content}</p>

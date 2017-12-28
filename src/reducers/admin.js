@@ -37,10 +37,13 @@ export const editPhoto = (
     category_id: 1,
     id: null,
     file: null,
+    uploading: false,
   },
   action,
 ) => {
   switch (action.type) {
+    case ADMIN.UPLOAD_PHOTO:
+      return { ...state, uploading: true };
     case ADMIN.ADD_CATEGORY_SUCCESS:
       return { ...state, category_id: action.category.id };
     case GALLERY.CATEGORIES_SUCCESS:
@@ -57,6 +60,7 @@ export const editPhoto = (
         name: '',
         id: null,
         file: null,
+        uploading: false,
       };
     case ADMIN.FILL_PHOTO_FORM: {
       let val = null;
@@ -83,10 +87,13 @@ export const editCategory = (
     caption: '',
     src: '',
     file: null,
+    uploading: false,
   },
   action,
 ) => {
   switch (action.type) {
+    case ADMIN.ADD_CATEGORY:
+      return { ...state, uploading: true };
     case ADMIN.ADD_CATEGORY_SUCCESS:
       alert('Категория добавлена!');
       return {
@@ -95,6 +102,7 @@ export const editCategory = (
         caption: '',
         src: '',
         file: null,
+        uploading: false,
       };
     case ADMIN.FILL_CATEGORY_FORM: {
       let val = null;

@@ -22,6 +22,7 @@ const mapDispatchToProps = dispatch => ({
 
 const PhotoForm = ({ editPhoto, fillForm, addPhoto, adminCategories }) => (
   <section className="download">
+    {console.log(editPhoto)}
     <div className="download-form">
       <div
         className="download-photo"
@@ -72,7 +73,13 @@ const PhotoForm = ({ editPhoto, fillForm, addPhoto, adminCategories }) => (
         />
       </label>
       <div className="download-btn">
-        <a className="btn-form" onClick={() => addPhoto(editPhoto)}>
+        <a
+          className="btn-form"
+          onClick={() =>
+            !editPhoto.uploading
+              ? addPhoto(editPhoto)
+              : console.log('cant upload')}
+        >
           Загрузить
         </a>
       </div>

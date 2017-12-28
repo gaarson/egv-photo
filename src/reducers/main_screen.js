@@ -36,9 +36,12 @@ const defaultSections = [
 export const mainSections = (state = defaultSections, action) => {
   switch (action.type) {
     case MAIN.PHOTOS_SUCCESS:
-      return state.map((section, index) => {
+      return state.map(section => {
         const newSection = section;
-        newSection.photo = action.data[index].src;
+        newSection.photo =
+          action.data[
+            Math.floor(Math.random() * (action.data.length - 0) + 0)
+          ].src;
 
         return newSection;
       });

@@ -6,13 +6,28 @@ import Section from './section/Section';
 import Feedback from './feedback/Feedback';
 import Photos from './photos/Photos';
 
-const mapStateToProps = ({ mainSections }) => ({ mainSections });
+const mapStateToProps = ({ mainSections, mainPhotos }) => ({
+  mainSections,
+  mainPhotos,
+});
 
 const mapDispatchToProps = dispatch => ({
   getMainPhotos: () => dispatch(mainScreen.pending()),
+  slideShow: photos => dispatch(mainScreen.success(photos)),
 });
 
 class Main extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      interval: setInterval(() => {
+        if (this.props.mainPhotos.length)
+          this.props.slideShow(this.props.mainPhotos);
+      }, 6000),
+    };
+  }
+
   componentDidMount() {
     this.props.getMainPhotos();
 
@@ -78,6 +93,10 @@ class Main extends React.Component {
         }
       }
     });
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.state.interval);
   }
 
   render() {

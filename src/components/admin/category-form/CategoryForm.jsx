@@ -53,7 +53,14 @@ const CategoryForm = ({ editCategory, fillForm, addCategory }) => (
       />
 
       <div className="download-btn">
-        <a className="btn-form" onClick={() => addCategory(editCategory)}>
+        <a
+          role="button"
+          className="btn-form"
+          onClick={() =>
+            !editCategory.uploading
+              ? addCategory(editCategory)
+              : console.log('cant upload')}
+        >
           Загрузить
         </a>
       </div>

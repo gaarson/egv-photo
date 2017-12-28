@@ -19,7 +19,7 @@ const mapDispatchToProps = dispatch => ({
   getCategories: () => dispatch(gallery.categoriesPending()),
   getPhotos: (category, page) => dispatch(gallery.pending(category, page)),
   move: e => dispatch(gallery.move(e)),
-  open: e => dispatch(gallery.open(e.target)),
+  open: e => dispatch(gallery.open(e)),
   close: () => dispatch(gallery.close()),
   change: id => {
     dispatch(gallery.changeCategory(id));
@@ -56,7 +56,7 @@ class Gallery extends React.Component {
             />
           ))}
         </div>
-        <Photos photos={galleryPhotos} onClick={open} />
+        <Photos photos={galleryPhotos} onClick={(event, obj) => open(obj)} />
         <LightBox
           isOpen={ligthBox.open}
           images={ligthBox.images}
