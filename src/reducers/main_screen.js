@@ -53,7 +53,7 @@ export const mainSections = (state = defaultSections, action) => {
 export const mainPhotos = (state, action) => {
   switch (action.type) {
     case MAIN.PHOTOS_SUCCESS:
-      return action.data;
+      return action.data.slice(0, 6);
     default:
       return state || [];
   }

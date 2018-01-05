@@ -22,7 +22,6 @@ const mapDispatchToProps = dispatch => ({
 
 const PhotoForm = ({ editPhoto, fillForm, addPhoto, adminCategories }) => (
   <section className="download">
-    {console.log(editPhoto)}
     <div className="download-form">
       <div
         className="download-photo"
