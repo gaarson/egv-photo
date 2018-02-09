@@ -6,7 +6,7 @@ import './style.css';
 const Header = ({ location: { pathname } }) => (
   <nav id="nav" style={{ display: pathname.search('admin') !== -1 && 'none' }}>
     <ul className="navbar">
-      <li className="navbar-itm">
+      {/* <li className="navbar-itm">
         <Link to="#one" className="navbar-link">
           Чем я занимаюсь
         </Link>
@@ -15,7 +15,7 @@ const Header = ({ location: { pathname } }) => (
         <Link to="#two" className="navbar-link">
           Обо мне
         </Link>
-      </li>
+      </li> */}
       <li className="navbar-itm">
         <Link to="#three" className="navbar-link">
           Портфолио
@@ -42,10 +42,7 @@ const Header = ({ location: { pathname } }) => (
     <h1 className="logo">
       <Link to="/">Фотограф Евгений Жуков</Link>
       <div className="socials-header">
-        <a
-          href="https://www.instagram.com/evg_zhukov/?hl=ru"
-          className="socials-itm-head"
-        >
+        <a href="https://www.instagram.com/evg_zhukov/?hl=ru" className="socials-itm-head">
           <i className="fa fa-instagram" aria-hidden="true" />
         </a>
         <a href="/" className="socials-itm-head">

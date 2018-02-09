@@ -1,7 +1,7 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import agent from './agent';
 
-import isEmpty from './utils';
+import { isEmpty } from '../utils';
 import { ADMIN } from '../consts';
 import { admin } from '../actions';
 

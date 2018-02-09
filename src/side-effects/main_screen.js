@@ -1,13 +1,17 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, select, takeLatest } from 'redux-saga/effects';
 import agent from './agent';
 
 import { MAIN } from '../consts';
 import { mainScreen } from '../actions';
+import { getFeedbackState } from '../utils';
 
-function* dispatchFeedback({ feedback }) {
+function* dispatchFeedback() {
   try {
-    yield call(agent.post('/api/main/feedback').send({ feedback }));
-    yield put(mainScreen.success('send'));
+    const feedback = yield select(getFeedbackState);
+    console.log(feedback);
+    const success = yield agent.post('/api/feedback').send({ feedback });
+    console.log(success);
+    yield put(mainScreen.sendFeedbackSuccess());
   } catch (error) {
     yield put(mainScreen.error(error));
   }

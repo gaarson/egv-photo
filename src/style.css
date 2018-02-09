@@ -131,7 +131,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: '';
+  content: "";
   content: none;
 }
 
@@ -150,7 +150,7 @@ body,
 input,
 textarea,
 select {
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: "Open Sans Condensed", sans-serif;
   font-size: 20px;
   line-height: 1.5em;
   color: #676d79;
@@ -257,7 +257,7 @@ a {
   margin-left: -42px;
   position: absolute;
   left: 50%;
-  bottom: 0;
+  bottom: 70px;
 }
 
 .btn-form {
@@ -284,7 +284,7 @@ a {
   width: 100%;
   height: 2px;
   background: #e5e6e7;
-  content: '';
+  content: "";
   opacity: 0.65;
   -webkit-transition: all 0.2s cubic-bezier(0.02, 0.01, 0.47, 1);
   transition: all 0.2s cubic-bezier(0.02, 0.01, 0.47, 1);
@@ -509,7 +509,7 @@ select:focus {
 }
 
 .info {
-  width: 60%;
+  width: 35%;
   padding: 3.5em 2.5em 3.5em 2.5em;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
@@ -821,7 +821,7 @@ textarea {
   pointer-events: none;
   -webkit-transition: opacity 0.25s ease;
   transition: opacity 0.25s ease;
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 0;
@@ -918,7 +918,7 @@ textarea {
   animation: spinner 1s linear infinite;
   -webkit-transition: opacity 0.5s ease-in-out;
   transition: opacity 0.5s ease-in-out;
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   top: 50%;
@@ -1044,7 +1044,9 @@ textarea {
 .footer {
   background: #39454b;
   padding: 15px 10px;
-  position: relative;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
   z-index: 2;
 }
 
@@ -1073,7 +1075,7 @@ textarea {
   position: relative;
 }
 .socials-itm:before {
-  content: '';
+  content: "";
   width: 100%;
   height: 100%;
   position: absolute;

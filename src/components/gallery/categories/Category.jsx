@@ -3,15 +3,12 @@ import PropTypes from 'prop-types';
 
 import './Category.css';
 
-const Category = ({ 
-  pic,
-  title,
-  active,
-  change,
+const Category = ({
+  pic, title, active, change,
 }) => (
   <section>
     <div className="category-block" onClick={change}>
-      <p className="category-title" >{title}</p>
+      <p className="category-title">{title}</p>
       <img src={pic} alt="" className={`${active && 'active'} category-img`} />
     </div>
   </section>

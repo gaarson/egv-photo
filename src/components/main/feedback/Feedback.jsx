@@ -20,15 +20,10 @@ const Feedback = ({ fill, send }) => (
         <div className="input-col">
           <input type="email" placeholder="Email" id="email" onChange={fill} />
         </div>
-        <textarea
-          rows="5"
-          placeholder="Сообщение"
-          id="discription"
-          onChange={fill}
-        />
-        <a href="#one" className="btn-form" onClick={send}>
+        <textarea rows="5" placeholder="Сообщение" id="discription" onChange={fill} />
+        <span href="#one" className="btn-form" onClick={send}>
           Отправить
-        </a>
+        </span>
       </form>
     </div>
   </section>

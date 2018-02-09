@@ -13,6 +13,22 @@
   animation: sectionAnimation 60s linear infinite 0s;
 }
 
+.trans {
+  transition: all 5s ease;
+  animation: textAnimation 7s linear infinite 0s;
+}
+
+@keyframes textAnimation {
+  5%,
+  50% {
+    opacity: 0;
+  }
+  0%,
+  55% {
+    opacity: 1;
+  }
+}
+
 @keyframes sectionAnimation {
   0% {
     opacity: 0.8;
