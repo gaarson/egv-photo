@@ -61,9 +61,12 @@ export const mainPhotos = (state, action) => {
 
 export const feedback = (state, action) => {
   switch (action.type) {
+    case MAIN.SEND_FEEDBACK:
+      return { ...state };
     case MAIN.SET_FEEDBACK_INFO:
       return { ...state, [action.data.id]: action.data.value };
     case MAIN.SEND_FEEDBACK_SUCCESS:
+      alert('Ваше сообщение отправлено!');
       return state;
     default:
       return state || {};

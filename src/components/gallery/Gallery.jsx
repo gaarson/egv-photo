@@ -21,7 +21,7 @@ const mapDispatchToProps = dispatch => ({
   move: e => dispatch(gallery.move(e)),
   open: e => dispatch(gallery.open(e)),
   close: () => dispatch(gallery.close()),
-  change: id => {
+  change: (id) => {
     dispatch(gallery.changeCategory(id));
     dispatch(gallery.pending(id));
   },
@@ -35,13 +35,7 @@ class Gallery extends React.Component {
 
   render() {
     const {
-      galleryPhotos,
-      galleryCategories,
-      ligthBox,
-      change,
-      close,
-      move,
-      open,
+      galleryPhotos, galleryCategories, ligthBox, change, close, move, open,
     } = this.props;
     return (
       <div className="gallery-block">

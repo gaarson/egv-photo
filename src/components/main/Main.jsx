@@ -22,8 +22,7 @@ class Main extends React.Component {
 
     this.state = {
       interval: setInterval(() => {
-        if (this.props.mainPhotos.length)
-          this.props.slideShow(this.props.mainPhotos);
+        if (this.props.mainPhotos.length) this.props.slideShow(this.props.mainPhotos);
       }, 6000),
     };
   }
@@ -34,8 +33,9 @@ class Main extends React.Component {
     const { $ } = window;
 
     $(document).ready(() => {
-      $('a[href*="#"]').bind('click', function cb(e) {
+      $('.navbar-link').bind('click', function cb(e) {
         const anchor = $(this);
+        console.log(anchor.attr('href'));
         $('html, body')
           .stop()
           .animate(

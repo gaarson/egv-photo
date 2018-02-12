@@ -26,7 +26,7 @@ class Admin extends React.Component {
     const { $ } = window;
     const inputs = document.querySelectorAll('.input-file');
 
-    Array.prototype.forEach.call(inputs, function cb(input) {
+    Array.prototype.forEach.call(inputs, (input) => {
       const label = input.nextElementSibling;
       const labelVal = label.innerHTML;
 

@@ -14,12 +14,7 @@ export const galleryCategories = (state, action) => {
     case GALLERY.CATEGORIES_SUCCESS:
       return action.data;
     case GALLERY.CHANGE_CATEGORY:
-      return state.map(
-        cat =>
-          cat.id === action.id
-            ? { ...cat, active: true }
-            : { ...cat, active: false },
-      );
+      return state.map(cat => (cat.id === action.id ? { ...cat, active: true } : { ...cat, active: false }));
     default:
       return state || [];
   }
@@ -45,12 +40,17 @@ export const ligthBox = (
       };
     case GALLERY.LIGHTBOX_CLOSE:
       return { ...state, open: false };
-    case GALLERY.LIGHTBOX_MOVE:
+    case GALLERY.LIGHTBOX_MOVE: {
+      console.log('action', action);
+      let { currentImage } = state;
+      if (action.event === 1) currentImage += 1;
+      if (action.event === -1) currentImage -= 1;
+      if (currentImage >= state.images.length) currentImage = 0;
       return {
         ...state,
-        currentImage:
-          action.event === 1 ? state.currentImage + 1 : state.currentImage - 1,
+        currentImage,
       };
+    }
     default:
       return state || {};
   }

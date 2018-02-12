@@ -8,8 +8,8 @@ const Category = ({
 }) => (
   <section>
     <div className="category-block" onClick={change}>
-      <p className="category-title">{title}</p>
-      <img src={pic} alt="" className={`${active && 'active'} category-img`} />
+      <p className={`category-title${active ? ' active' : ''}`}>{title}</p>
+      {/* <img src={pic} alt="" className={`${active && 'active'} category-img`} /> */}
     </div>
   </section>
 );

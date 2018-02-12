@@ -1,20 +1,22 @@
 .gallery-block section {
-  position: relative;
   top: 30px;
 }
 
 .category-block {
   cursor: pointer;
+  display: flex;
 }
 
-.category-block .active {
+.category-title.active {
   opacity: 1;
 }
 
 .category-title {
+  opacity: 0.3;
   text-align: center;
-  position: relative;
-  top: 90px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #676d79;
 }
 
 .category-img {
@@ -23,7 +25,11 @@
   opacity: 0.3;
 }
 
-.category-block:hover .category-img {
+.category-title:hover {
   transition: 0.5s;
   opacity: 1;
+}
+
+.react-photo-gallery--gallery img {
+  transition: 0.3s;
 }

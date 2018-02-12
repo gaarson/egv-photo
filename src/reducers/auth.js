@@ -6,6 +6,6 @@ export default (state, action) => {
       console.log(action);
       return state;
     default:
-      return state || 'afsaf';
+      return state || '1';
   }
 };

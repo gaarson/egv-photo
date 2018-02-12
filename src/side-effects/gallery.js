@@ -5,18 +5,6 @@ import { isEmpty } from '../utils';
 import { GALLERY } from '../consts';
 import { gallery } from '../actions';
 
-function* fetchCategories() {
-  try {
-    let { body } = yield agent.get('/api/categories');
-
-    if (isEmpty(body)) body = [];
-
-    yield put(gallery.categoriesSuccess(body));
-  } catch (error) {
-    yield put(gallery.categoriesError(error));
-  }
-}
-
 function* fetchGalleryPhotos({ category, page }) {
   try {
     let { body } = yield agent.get('/api/photos').query({ category, page });
@@ -26,6 +14,20 @@ function* fetchGalleryPhotos({ category, page }) {
     yield put(gallery.success(body));
   } catch (error) {
     yield put(gallery.error(error));
+  }
+}
+
+function* fetchCategories() {
+  try {
+    let { body } = yield agent.get('/api/categories');
+
+    if (isEmpty(body)) body = [];
+    else body[0].active = true;
+
+    yield fetchGalleryPhotos({ category: body[0].id });
+    yield put(gallery.categoriesSuccess(body));
+  } catch (error) {
+    yield put(gallery.categoriesError(error));
   }
 }
 

@@ -8,9 +8,7 @@ import { getFeedbackState } from '../utils';
 function* dispatchFeedback() {
   try {
     const feedback = yield select(getFeedbackState);
-    console.log(feedback);
-    const success = yield agent.post('/api/feedback').send({ feedback });
-    console.log(success);
+    yield agent.post('/api/feedback').send({ feedback });
     yield put(mainScreen.sendFeedbackSuccess());
   } catch (error) {
     yield put(mainScreen.error(error));

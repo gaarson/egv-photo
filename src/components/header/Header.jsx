@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import './style.css';
 
-const Header = ({ location: { pathname } }) => (
+const Header = ({ location: { pathname }, history: { push } }) => (
   <nav id="nav" style={{ display: pathname.search('admin') !== -1 && 'none' }}>
     <ul className="navbar">
       {/* <li className="navbar-itm">
@@ -17,12 +17,12 @@ const Header = ({ location: { pathname } }) => (
         </Link>
       </li> */}
       <li className="navbar-itm">
-        <Link to="#three" className="navbar-link">
+        <Link to="#three" className="navbar-link" onClick={() => push('')}>
           Портфолио
         </Link>
       </li>
       <li className="navbar-itm">
-        <Link to="#four" className="navbar-link">
+        <Link to="#four" className="navbar-link" onClick={() => push('/')}>
           Обратаная связь
         </Link>
       </li>
