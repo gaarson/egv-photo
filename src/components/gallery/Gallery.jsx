@@ -60,9 +60,9 @@ class Gallery extends React.Component {
           onClickImage={() => move(1)}
           onClose={close}
         />
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
+        {/* <div style={{ display: 'flex', justifyContent: 'center' }}>
           <p className="btn-form">Загрузить еще</p>
-        </div>
+        </div> */}
       </div>
     );
   }

@@ -17,12 +17,12 @@ const Header = ({ location: { pathname }, history: { push } }) => (
         </Link>
       </li> */}
       <li className="navbar-itm">
-        <Link to="#three" className="navbar-link" onClick={() => push('')}>
+        <Link to="#three" className="navbar-link arrowScroll" onClick={() => push('')}>
           Портфолио
         </Link>
       </li>
       <li className="navbar-itm">
-        <Link to="#four" className="navbar-link" onClick={() => push('/')}>
+        <Link to="#four" className="navbar-link arrowScroll" onClick={() => push('/')}>
           Обратаная связь
         </Link>
       </li>

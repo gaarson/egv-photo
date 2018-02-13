@@ -33,18 +33,20 @@ class Main extends React.Component {
     const { $ } = window;
 
     $(document).ready(() => {
-      $('.navbar-link').bind('click', function cb(e) {
+      $('.arrowScroll').bind('click', function cb(e) {
         const anchor = $(this);
-        console.log(anchor.attr('href'));
-        $('html, body')
-          .stop()
-          .animate(
-            {
-              scrollTop: $(anchor.attr('href')).offset().top,
-            },
-            1000,
-          );
-        e.preventDefault();
+        console.log($(anchor.attr('href')));
+        if ($(anchor.attr('href')).offset()) {
+          $('html, body')
+            .stop()
+            .animate(
+              {
+                scrollTop: $(anchor.attr('href')).offset().top,
+              },
+              1000,
+            );
+          e.preventDefault();
+        }
       });
       return false;
     });

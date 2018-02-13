@@ -17,6 +17,7 @@ export const editArticle = (state = {}, action) => {
 export const adminPhotos = (state, action) => {
   switch (action.type) {
     case ADMIN.UPLOAD_PHOTO_SUCCESS:
+      console.log(action);
       return [...state, action.photo];
     case ADMIN.DELETE_PHOTO_SUCCESS: {
       return state.filter(photo => photo.id !== action.photo.id);
@@ -66,9 +67,7 @@ export const editPhoto = (
       let val = null;
       if (action.event.files) {
         [val] = action.event.files;
-      } else if (
-        Object.prototype.hasOwnProperty.call(action.event, 'checked')
-      ) {
+      } else if (Object.prototype.hasOwnProperty.call(action.event, 'checked')) {
         val = action.event.checked ? 1 : 0;
       } else {
         val = action.event.value;

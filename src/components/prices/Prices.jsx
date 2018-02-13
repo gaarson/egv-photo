@@ -19,7 +19,7 @@ const Prices = ({ categories, getCategories }) => {
         <div key={category.id} className="prices__category">
           <p>{category.title}</p>
           <img src={category.src} alt="" width="220px" />
-          <p>{category.discription}</p>
+          <p>{category.description}</p>
         </div>
       ))}
     </div>

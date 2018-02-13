@@ -609,7 +609,7 @@ select:focus {
 .form {
   margin-top: 2em;
   padding: 2em;
-  background: rgba(255, 255, 255, 0.95);
+  background: #fefcff;
 }
 
 .input-col {
@@ -1042,8 +1042,11 @@ textarea {
 }
 
 .footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
   background: #39454b;
-  padding: 15px 10px;
+  padding: 5px 10px;
   position: fixed;
   width: 100%;
   bottom: 0;

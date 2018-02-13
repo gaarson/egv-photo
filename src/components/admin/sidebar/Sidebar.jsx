@@ -26,52 +26,50 @@ const Sidebar = ({
   deleteCategory,
   deleteArticle,
   route,
-}) => {
-  let list = [];
-  let del = null;
-
-  if (route.type === 'photos') {
-    list = adminPhotos;
-    del = deletePhoto;
-  } else if (route.type === 'categories') {
-    list = adminCategories;
-    del = deleteCategory;
-  } else if (route.type === 'news') {
-    list = adminNews;
-    del = deleteArticle;
-  }
-
-  return (
-    <aside className="catalog catalog-js">
-      <div className="close close-js">
-        <i className="fa fa-times close-icon" aria-hidden="true" />
-      </div>
-      <ul className="change">
-        <li>
-          <Link to="/admin/categories">Категории</Link>
-        </li>
-        <li>
-          <Link to="/admin/photos">Фото</Link>
-        </li>
-        <li>
-          <Link to="/admin/news">Новости</Link>
-        </li>
+}) => (
+  <aside className="catalog catalog-js">
+    {console.log(adminPhotos)}
+    <div className="close close-js">
+      <i className="fa fa-times close-icon" aria-hidden="true" />
+    </div>
+    <ul className="change">
+      <li>
+        <Link to="/admin/categories">Категории</Link>
+      </li>
+      <li>
+        <Link to="/admin/photos">Фото</Link>
+      </li>
+      <li>
+        <Link to="/admin/news">Новости</Link>
+      </li>
+    </ul>
+    <div className="catalog-content">
+      <ul>
+        {adminCategories.map(category => (
+          <li key={category.id}>
+            <a style={{ fontSize: '16px', fontWeight: 'bold' }}>{category.title}</a>
+            <a className="delete-photo" onClick={() => deleteCategory(category)}>
+              &times;
+            </a>
+            <ul className="admin-category-photos">
+              {adminPhotos.map(item =>
+                  +item.category_id === +category.id && (
+                    <li key={item.id}>
+                      {console.log(item)}
+                      <a>{item.title}</a>
+                      <a className="delete-photo" onClick={() => deletePhoto(item)}>
+                        &times;
+                      </a>
+                      <img src={item.src} alt="" width="200px" />
+                    </li>
+                  ))}
+            </ul>
+          </li>
+        ))}
       </ul>
-      <div className="catalog-content">
-        <ul>
-          {list.map(item => (
-            <li key={item.id}>
-              <a>{item.title}</a>
-              <a className="delete-photo" onClick={() => del(item)}>
-                &times;
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </aside>
-  );
-};
+    </div>
+  </aside>
+);
 
 Sidebar.propTypes = {
   adminCategories: PropTypes.arrayOf(PropTypes.object).isRequired,
