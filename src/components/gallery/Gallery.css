@@ -12,3 +12,8 @@
   position: relative;
   top: 25px;
 }
+
+.gallery-block {
+  width: 100%;
+  position: absolute;
+}

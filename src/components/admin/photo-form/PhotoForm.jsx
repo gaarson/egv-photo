@@ -12,7 +12,7 @@ const mapStateToProps = ({ editPhoto, adminCategories }) => ({
 
 const mapDispatchToProps = dispatch => ({
   fillForm: e => dispatch(admin.fillForm(e.target)),
-  addPhoto: info => {
+  addPhoto: (info) => {
     const file = new FormData();
     Object.keys(info).forEach(key => file.append(key, info[key]));
 
@@ -20,12 +20,16 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const PhotoForm = ({ editPhoto, fillForm, addPhoto, adminCategories }) => (
+const PhotoForm = ({
+  editPhoto, fillForm, addPhoto, adminCategories,
+}) => (
   <section className="download">
     <div className="download-form">
-      <div
+      <img
         className="download-photo"
-        style={{ background: `url("${editPhoto.src}") no-repeat` }}
+        src={editPhoto.file && URL.createObjectURL(editPhoto.file)}
+        alt=""
+        id="photo-preview"
       />
       <input
         type="file"
@@ -64,20 +68,12 @@ const PhotoForm = ({ editPhoto, fillForm, addPhoto, adminCategories }) => (
       </select>
       <label htmlFor="main" className="is-main-radio">
         Для главной
-        <input
-          type="checkbox"
-          id="main"
-          value={editPhoto.main}
-          onChange={fillForm}
-        />
+        <input type="checkbox" id="main" value={editPhoto.main} onChange={fillForm} />
       </label>
       <div className="download-btn">
         <a
           className="btn-form"
-          onClick={() =>
-            !editPhoto.uploading
-              ? addPhoto(editPhoto)
-              : console.log('cant upload')}
+          onClick={() => (!editPhoto.uploading ? addPhoto(editPhoto) : console.log('cant upload'))}
         >
           Загрузить
         </a>

@@ -34,13 +34,13 @@ const Sidebar = ({
     </div>
     <ul className="change">
       <li>
-        <Link to="/admin/categories">Категории</Link>
+        <Link to="/admin/categories" href="/admin/categories">Категории</Link>
       </li>
       <li>
-        <Link to="/admin/photos">Фото</Link>
+        <Link to="/admin/photos" href="/admin/photos">Фото</Link>
       </li>
       <li>
-        <Link to="/admin/news">Новости</Link>
+        <Link to="/admin/news" href="/admin/news">Новости</Link>
       </li>
     </ul>
     <div className="catalog-content">
