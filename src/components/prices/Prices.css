@@ -1,4 +1,6 @@
 .prices {
+  position: absolute;
+  width: 100%;
   display: flex;
   margin-top: 5%;
   flex-direction: row;
