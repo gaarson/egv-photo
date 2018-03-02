@@ -71,7 +71,12 @@ const App = () => (
   <Router>
     <div className="container">
       {routes.map(route => (
-        <Route key={route.id} path={route.path} exact={route.exact} component={route.main} />
+        <Route
+          key={route.id}
+          path={route.path}
+          exact={route.exact}
+          component={route.main}
+        />
       ))}
     </div>
   </Router>
