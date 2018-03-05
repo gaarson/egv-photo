@@ -2,8 +2,20 @@
   cursor: pointer;
 }
 
-.change li {
-  color: #fff;
+.change {
+  display: flex;
+  position: relative;
+  justify-content: space-around;
+}
+
+.change a {
+  width: 40%;
+  text-align: center;
+}
+
+.selected-type {
+  background-color: #39454b;
+  color: #fefcff;
 }
 
 .admin-category-photos {

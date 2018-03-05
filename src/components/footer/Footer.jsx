@@ -3,7 +3,10 @@ import React from 'react';
 const Footer = () => (
   <footer className="footer">
     <div className="socials">
-      <a href="https://www.instagram.com/evg_zhukov/?hl=ru" className="socials-itm">
+      <a
+        href="https://www.instagram.com/evg_zhukov/?hl=ru"
+        className="socials-itm"
+      >
         <i className="fa fa-instagram" aria-hidden="true" />
       </a>
       <a href="/" className="socials-itm">
@@ -15,7 +18,7 @@ const Footer = () => (
     </div>
     <p style={{ color: '#667a84' }}>+7 (906) 115-03-83 </p>
     <div className="copy">
-      <span>&copy; 2017</span>
+      <span>&copy; 2018</span>
     </div>
   </footer>
 );

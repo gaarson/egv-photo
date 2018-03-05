@@ -10,8 +10,12 @@ import Auth from './auth/Auth';
 import PhotoForm from './photo-form/PhotoForm';
 import CategoryForm from './category-form/CategoryForm';
 import ArticleForm from './article-form/ArticleForm';
+import AdminsTypes from './AdminsTypes';
 
-const mapStateToProps = ({ auth }, { match: { params } }) => ({ auth, params });
+const mapStateToProps = ({ auth }, { match: { params } }) => ({
+  auth,
+  params,
+});
 
 const mapDispatchToProps = dispatch => ({
   getCategories: () => dispatch(gallery.categoriesPending()),
@@ -26,7 +30,7 @@ class Admin extends React.Component {
     const { $ } = window;
     const inputs = document.querySelectorAll('.input-file');
 
-    Array.prototype.forEach.call(inputs, (input) => {
+    Array.prototype.forEach.call(inputs, input => {
       const label = input.nextElementSibling;
       const labelVal = label.innerHTML;
 
@@ -69,6 +73,7 @@ class Admin extends React.Component {
     if (this.props.auth) {
       admin = (
         <div>
+          <AdminsTypes />
           <Burger />
           <Sidebar route={this.props.params} />
           {form}

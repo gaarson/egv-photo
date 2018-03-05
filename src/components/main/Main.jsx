@@ -22,7 +22,8 @@ class Main extends React.Component {
 
     this.state = {
       interval: setInterval(() => {
-        if (this.props.mainPhotos.length) this.props.slideShow(this.props.mainPhotos);
+        if (this.props.mainPhotos.length)
+          this.props.slideShow(this.props.mainPhotos);
       }, 6000),
     };
   }
@@ -51,35 +52,34 @@ class Main extends React.Component {
       return false;
     });
 
-    $(document).scroll(() => {
-      const coord = $('.career').offset();
-      if (coord) {
-        const count = coord.top * 1.5;
-        if (
-          $(window).height() + $(window).scrollTop() >= coord.top * 1.5 &&
-          $(window).scrollTop() - count < 0
-        ) {
-          $('.career').addClass('animation');
-        } else {
-          $('.career').removeClass('animation');
-        }
-      }
-    });
+    //$(document).scroll(() => {
+    //const coord = $('.career').offset();
+    //if (coord) {
+    //const count = coord.top * 1.5;
+    //if (
+    //$(window).height() + $(window).scrollTop() >= coord.top * 1.5 &&
+    //$(window).scrollTop() - count < 0
+    //) {
+    //$('.career').addClass('animation');
+    //} else {
+    //$('.career').removeClass('animation');
+    //}
+    //}
+    //});
 
-    $(document).scroll(() => {
-      const coord = $('.aboutMe').offset();
-      if (coord) {
-        const count = coord.top * 1.25;
-        if (
-          $(window).height() + $(window).scrollTop() >= coord.top * 1.25 &&
-          $(window).scrollTop() - count < 0
-        ) {
-          $('.aboutMe').addClass('animation');
-        } else {
-          $('.aboutMe').removeClass('animation');
-        }
-      }
-    });
+    //const coord = $('.aboutMe').offset();
+    //if (coord) {
+    //const count = coord.top * 1.25;
+    //if (
+    //$(window).height() + $(window).scrollTop() >= coord.top * 1.25 &&
+    //$(window).scrollTop() - count < 0
+    //) {
+    //$('.aboutMe').addClass('animation');
+    //} else {
+    //$('.aboutMe').removeClass('animation');
+    //}
+    //}
+    //});
 
     $(document).scroll(() => {
       const coord = $('.work').offset();

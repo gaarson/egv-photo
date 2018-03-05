@@ -62,10 +62,34 @@ function* fetchDeleteCategory({ category }) {
   }
 }
 
+function* fetchGetCategory({ id }) {
+  try {
+    const { body } = yield agent
+      .get('/api/categories')
+      .query({ id, one: true });
+
+    yield put(admin.getCategorySuccess(body));
+  } catch (error) {
+    yield put(admin.getCategoryError(error));
+  }
+}
+
+function* fetchGetPhoto({ id }) {
+  try {
+    const { body } = yield agent.get('/api/photos').query({ id, one: true });
+
+    yield put(admin.getPhotoSuccess(body));
+  } catch (error) {
+    yield put(admin.getPhotoError(error));
+  }
+}
+
 export function* watchFetchAdmin() {
   yield takeLatest(ADMIN.ADD_CATEGORY, fetchUploadCategory);
   yield takeLatest(ADMIN.UPLOAD_PHOTO, fetchUploadPhoto);
   yield takeLatest(ADMIN.PHOTOS_PENDING, fetchAdminPhotos);
   yield takeLatest(ADMIN.DELETE_PHOTO, fetchDeletePhoto);
   yield takeLatest(ADMIN.DELETE_CATEGORY, fetchDeleteCategory);
+  yield takeLatest(ADMIN.GET_CATEGORY, fetchGetCategory);
+  yield takeLatest(ADMIN.GET_PHOTO, fetchGetPhoto);
 }

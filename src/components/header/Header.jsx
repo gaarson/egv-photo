@@ -6,24 +6,32 @@ import './style.css';
 const Header = ({ location: { pathname }, history: { push } }) => (
   <nav id="nav" style={{ display: pathname.search('admin') !== -1 && 'none' }}>
     <ul className="navbar">
-      {/* <li className="navbar-itm">
-        <Link to="#one" className="navbar-link">
-          Чем я занимаюсь
+      <li className="navbar-itm">
+        <Link to="/" className="navbar-link">
+          Главная
         </Link>
       </li>
-      <li className="navbar-itm">
+      {/* <li className="navbar-itm">
         <Link to="#two" className="navbar-link">
           Обо мне
         </Link>
       </li> */}
       <li className="navbar-itm">
-        <Link to="#three" className="navbar-link arrowScroll" onClick={() => push('')}>
+        <Link
+          to="#three"
+          className="navbar-link arrowScroll"
+          onClick={() => push('/gallery')}
+        >
           Портфолио
         </Link>
       </li>
       <li className="navbar-itm">
-        <Link to="#four" className="navbar-link arrowScroll" onClick={() => push('/')}>
-          Обратаная связь
+        <Link
+          to="#four"
+          className="navbar-link arrowScroll"
+          onClick={() => push('/')}
+        >
+          Обратная связь
         </Link>
       </li>
       {
@@ -42,7 +50,10 @@ const Header = ({ location: { pathname }, history: { push } }) => (
     <h1 className="logo">
       <Link to="/">Фотограф Евгений Жуков</Link>
       <div className="socials-header">
-        <a href="https://www.instagram.com/evg_zhukov/?hl=ru" className="socials-itm-head">
+        <a
+          href="https://www.instagram.com/evg_zhukov/?hl=ru"
+          className="socials-itm-head"
+        >
           <i className="fa fa-instagram" aria-hidden="true" />
         </a>
         <a href="/" className="socials-itm-head">

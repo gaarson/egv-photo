@@ -5,7 +5,7 @@ export default {
   photosSuccess: data => ({ type: ADMIN.PHOTOS_SUCCESS, data }),
   photosError: error => ({ type: ADMIN.PHOTOS_ERROR, error }),
 
-  getPhoto: photoId => ({ type: ADMIN.GET_PHOTO, photoId }),
+  getPhoto: id => ({ type: ADMIN.GET_PHOTO, id }),
   getPhotoSuccess: photo => ({ type: ADMIN.GET_PHOTO_SUCCESS, photo }),
   getPhotoError: error => ({ type: ADMIN.GET_PHOTO_ERROR, error }),
 
@@ -27,6 +27,13 @@ export default {
     category,
   }),
   addCategoryError: error => ({ type: ADMIN.ADD_CATEGORY_ERROR, error }),
+
+  getCategory: id => ({ type: ADMIN.GET_CATEGORY, id }),
+  getCategorySuccess: category => ({
+    type: ADMIN.GET_CATEGORY_SUCCESS,
+    category,
+  }),
+  getCategoryError: error => ({ type: ADMIN.GET_CATEGORY_ERROR, error }),
 
   deleteCategory: category => ({ type: ADMIN.DELETE_CATEGORY, category }),
   deleteCategorySuccess: category => ({
@@ -51,4 +58,5 @@ export default {
   deleteArticleError: error => ({ type: ADMIN.DELETE_ARTICLE_ERROR, error }),
 
   editArticle: event => ({ type: ADMIN.EDIT_ARTIClE, event }),
+  setActiveCategory: id => ({ type: ADMIN.SET_ACTIVE_CATEGORY, id }),
 };

@@ -7,7 +7,7 @@ const mapStateToProps = ({ editCategory }) => ({ editCategory });
 
 const mapDispatchToProps = dispatch => ({
   fillForm: e => dispatch(admin.fillCategoryForm(e.target)),
-  addCategory: (info) => {
+  addCategory: info => {
     const file = new FormData();
     Object.keys(info).forEach(key => file.append(key, info[key]));
 
@@ -58,7 +58,10 @@ const CategoryForm = ({ editCategory, fillForm, addCategory }) => (
           role="button"
           className="btn-form"
           onClick={() =>
-            (!editCategory.uploading ? addCategory(editCategory) : console.log('cant upload'))}
+            !editCategory.uploading || editCategory.id
+              ? addCategory(editCategory)
+              : console.log('cant upload')
+          }
         >
           Загрузить
         </a>
