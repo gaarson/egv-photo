@@ -18,7 +18,7 @@ const Photos = ({ photos }) => (
         {photos.map(item => (
           <article key={item.id} className="work-gallery--itm">
             <Link to="/gallery" className="thumbnail">
-              <img src={`http://ezhukov.ru:8080/${item.src}`} alt="" />
+              <img src={item.src} alt="" />
             </Link>
           </article>
         ))}

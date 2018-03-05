@@ -40,7 +40,7 @@ export const mainSections = (state = defaultSections, action) => {
         const newSection = section;
         const rand =
           action.data[Math.floor(Math.random() * (action.data.length - 0) + 0)];
-        newSection.photo = `http://ezhukov.ru:8080/${rand.src}`;
+        newSection.photo = rand.src;
         newSection.title = rand.title;
         newSection.content = rand.caption;
 
