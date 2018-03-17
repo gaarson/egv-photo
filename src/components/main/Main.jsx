@@ -4,7 +4,7 @@ import { mainScreen, gallery } from '../../actions';
 
 import Section from './section/Section';
 import Feedback from './feedback/Feedback';
-//import Photos from './photos/Photos';
+// import Photos from './photos/Photos';
 
 const mapStateToProps = ({ mainSections, mainPhotos }) => ({
   mainSections,
@@ -23,8 +23,9 @@ class Main extends React.Component {
 
     this.state = {
       interval: setInterval(() => {
-        if (this.props.mainPhotos.length)
+        if (this.props.mainPhotos.length) {
           this.props.slideShow(this.props.mainPhotos);
+        }
       }, 6000),
     };
   }

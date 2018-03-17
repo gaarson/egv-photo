@@ -13,9 +13,8 @@ const defaultSections = [
     number: 'one',
     mainType: 'info',
     type: 'career',
-    title: 'Запечатлите мнгновение.',
-    content:
-      'Я фотографирую для того, чтобы сохранить в памяти настоящие моменты жизни, чувства и эмоции, поэтому я не люблю стеклянные, пустые глаза, которые смотрят бездушно в кадр.',
+    title: 'Some Text',
+    content: 'text',
     to: 'four',
     button: 'btn-bottom',
     photo: '/img/2.jpg',
