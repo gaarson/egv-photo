@@ -509,7 +509,8 @@ select:focus {
 }
 
 .info {
-  width: 35%;
+  width: 100%;
+  height: 40%;
   padding: 3.5em 2.5em 3.5em 2.5em;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
@@ -666,7 +667,7 @@ textarea {
   position: fixed;
   top: 26px;
   bottom: 0;
-  z-index: 1;
+  z-index: 2;
   background: #39454b;
   overflow-y: auto;
   -webkit-transform: translateX(-100%);

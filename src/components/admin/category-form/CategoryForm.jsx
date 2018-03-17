@@ -2,6 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { admin } from '../../../actions';
+import { Editor } from 'react-draft-wysiwyg';
+import { convertToRaw } from 'draft-js';
+import draftToHtml from 'draftjs-to-html';
+
+import Loader from '../../loader';
 
 const mapStateToProps = ({ editCategory }) => ({ editCategory });
 
@@ -9,7 +14,16 @@ const mapDispatchToProps = dispatch => ({
   fillForm: e => dispatch(admin.fillCategoryForm(e.target)),
   addCategory: info => {
     const file = new FormData();
-    Object.keys(info).forEach(key => file.append(key, info[key]));
+    //info.caption = draftToHtml(convertToRaw(info.caption.getCurrentContent()));
+    Object.keys(info).forEach(
+      key =>
+        key === 'caption'
+          ? file.append(
+              key,
+              draftToHtml(convertToRaw(info[key].getCurrentContent())),
+            )
+          : file.append(key, info[key]),
+    );
 
     dispatch(admin.addCategory(file));
   },
@@ -23,6 +37,7 @@ const CategoryForm = ({ editCategory, fillForm, addCategory }) => (
         alt=""
         className="download-photo"
       />
+      <div className="loader-block">{editCategory.uploading && <Loader />}</div>
       <input
         type="file"
         name="file"
@@ -43,7 +58,15 @@ const CategoryForm = ({ editCategory, fillForm, addCategory }) => (
         onChange={fillForm}
         placeholder="Заголовок"
       />
-
+      <Editor
+        wrapperClassName="wrapper-class"
+        editorClassName="editor-class"
+        editorState={editCategory.caption}
+        onEditorStateChange={state => fillForm({ target: state })}
+        toolbarClassName="toolbar-class"
+        editorStyle={{ border: '1px solid', height: '300px' }}
+      />
+      {/*
       <textarea
         name=""
         id="caption"
@@ -52,6 +75,7 @@ const CategoryForm = ({ editCategory, fillForm, addCategory }) => (
         rows="3"
         placeholder="Описание"
       />
+      */}
 
       <div className="download-btn">
         <a

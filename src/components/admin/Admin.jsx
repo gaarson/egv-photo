@@ -12,6 +12,8 @@ import CategoryForm from './category-form/CategoryForm';
 import ArticleForm from './article-form/ArticleForm';
 import AdminsTypes from './AdminsTypes';
 
+import './Admin.css';
+
 const mapStateToProps = ({ auth }, { match: { params } }) => ({
   auth,
   params,
@@ -73,7 +75,7 @@ class Admin extends React.Component {
     if (this.props.auth) {
       admin = (
         <div>
-          <AdminsTypes />
+          <AdminsTypes type={type} />
           <Burger />
           <Sidebar route={this.props.params} />
           {form}

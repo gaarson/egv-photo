@@ -5,8 +5,6 @@ const defaultSections = [
     number: '',
     type: 'intro',
     mainType: 'welcome',
-    title: 'Some text',
-    content: 'Another SomeText',
     to: 'one',
     button: 'btn-circle',
     photo: '/img/3.jpg',
@@ -15,21 +13,12 @@ const defaultSections = [
     number: 'one',
     mainType: 'info',
     type: 'career',
-    title: 'Some text',
-    content: 'Another SomeText',
-    to: 'two',
+    title: 'Запечатлите мнгновение.',
+    content:
+      'Я фотографирую для того, чтобы сохранить в памяти настоящие моменты жизни, чувства и эмоции, поэтому я не люблю стеклянные, пустые глаза, которые смотрят бездушно в кадр.',
+    to: 'four',
     button: 'btn-bottom',
     photo: '/img/2.jpg',
-  },
-  {
-    number: 'two',
-    mainType: 'info',
-    type: 'aboutMe',
-    title: 'Some text',
-    content: 'Another SomeText',
-    to: 'three',
-    button: 'btn-bottom',
-    photo: '/img/1.jpg',
   },
 ];
 
@@ -37,14 +26,9 @@ export const mainSections = (state = defaultSections, action) => {
   switch (action.type) {
     case MAIN.PHOTOS_SUCCESS:
       return state.map(section => {
-        const newSection = section;
-        const rand =
+        const photo =
           action.data[Math.floor(Math.random() * (action.data.length - 0) + 0)];
-        newSection.photo = rand.src;
-        newSection.title = rand.title;
-        newSection.content = rand.caption;
-
-        return newSection;
+        return { ...section, photo: photo.src };
       });
     default:
       return state || [];
@@ -53,8 +37,16 @@ export const mainSections = (state = defaultSections, action) => {
 
 export const mainPhotos = (state, action) => {
   switch (action.type) {
-    case MAIN.PHOTOS_SUCCESS:
-      return action.data.slice(0, 6);
+    case MAIN.PHOTOS_SUCCESS: {
+      const index = Math.floor(Math.random() * (action.data.length - 0) + 0);
+
+      return action.data.map((item, i) => {
+        if (index === i) {
+          return { ...item, show: true };
+        }
+        return { ...item, show: false };
+      });
+    }
     default:
       return state || [];
   }

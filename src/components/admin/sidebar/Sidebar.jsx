@@ -77,6 +77,11 @@ const Sidebar = ({
                 item =>
                   +item.category_id === +category.id && (
                     <li key={item.id}>
+                      {item.is_main === 1 || item.is_main === '1' ? (
+                        <div className="main-photo" />
+                      ) : (
+                        ''
+                      )}
                       <Link to="photos" onClick={() => getPhoto(item.id)}>
                         {item.title}
                       </Link>

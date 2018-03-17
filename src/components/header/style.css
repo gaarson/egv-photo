@@ -1,8 +1,7 @@
 .socials-header {
-  margin-left: 10px;
+  margin-left: 25px;
   display: inline-block;
   position: relative;
-  bottom: 7px;
 }
 
 .socials-itm-head {
@@ -55,4 +54,49 @@
 .socials-itm-head:hover i {
   color: #39454b;
   z-index: 1;
+}
+
+.dropbtn {
+  background-color: #4caf50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  transition: 1s;
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.95);
+  min-width: 160px;
+}
+
+.dropdown-content a {
+  padding: 0px 16px;
+  text-decoration: none;
+  line-height: 30px;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.navbar-itm:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
+.navbar-itm {
+  cursor: pointer;
 }

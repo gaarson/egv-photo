@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { mainScreen } from '../../actions';
+import { mainScreen, gallery } from '../../actions';
 
 import Section from './section/Section';
 import Feedback from './feedback/Feedback';
-import Photos from './photos/Photos';
+//import Photos from './photos/Photos';
 
 const mapStateToProps = ({ mainSections, mainPhotos }) => ({
   mainSections,
@@ -14,6 +14,7 @@ const mapStateToProps = ({ mainSections, mainPhotos }) => ({
 const mapDispatchToProps = dispatch => ({
   getMainPhotos: () => dispatch(mainScreen.pending()),
   slideShow: photos => dispatch(mainScreen.success(photos)),
+  getCategories: () => dispatch(gallery.categoriesPending()),
 });
 
 class Main extends React.Component {
@@ -30,6 +31,7 @@ class Main extends React.Component {
 
   componentDidMount() {
     this.props.getMainPhotos();
+    this.props.getCategories();
 
     const { $ } = window;
 
@@ -52,20 +54,20 @@ class Main extends React.Component {
       return false;
     });
 
-    //$(document).scroll(() => {
-    //const coord = $('.career').offset();
-    //if (coord) {
-    //const count = coord.top * 1.5;
-    //if (
-    //$(window).height() + $(window).scrollTop() >= coord.top * 1.5 &&
-    //$(window).scrollTop() - count < 0
-    //) {
-    //$('.career').addClass('animation');
-    //} else {
-    //$('.career').removeClass('animation');
-    //}
-    //}
-    //});
+    $(document).scroll(() => {
+      const coord = $('.career').offset();
+      if (coord) {
+        const count = coord.top * 1.5;
+        if (
+          $(window).height() + $(window).scrollTop() >= coord.top * 1.5 &&
+          $(window).scrollTop() - count < 0
+        ) {
+          $('.career').addClass('animation');
+        } else {
+          $('.career').removeClass('animation');
+        }
+      }
+    });
 
     //const coord = $('.aboutMe').offset();
     //if (coord) {
@@ -102,10 +104,14 @@ class Main extends React.Component {
   }
 
   render() {
+    console.log('update');
     return (
       <div>
-        <Section mainSections={this.props.mainSections} />
-        <Photos />
+        <Section
+          mainSections={this.props.mainSections}
+          photos={this.props.mainPhotos}
+        />
+        {/* <Photos /> */}
         <Feedback />
       </div>
     );

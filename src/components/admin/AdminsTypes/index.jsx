@@ -9,7 +9,7 @@ class Types extends React.Component {
     super(props);
 
     this.state = {
-      selected: 0,
+      selected: this.props.type,
     };
   }
 
@@ -18,11 +18,12 @@ class Types extends React.Component {
   }
 
   render() {
+    const { type } = this.props;
     return (
       <div className="change">
         <Link
           onClick={() => this.setSelected(0)}
-          className={this.state.selected === 0 ? 'selected-type' : ''}
+          className={type === 'categories' ? 'selected-type' : ''}
           to="/admin/categories"
           href="/admin/categories"
         >
@@ -30,7 +31,7 @@ class Types extends React.Component {
         </Link>
         <Link
           onClick={() => this.setSelected(1)}
-          className={this.state.selected === 1 ? 'selected-type' : ''}
+          className={type === 'photos' ? 'selected-type' : ''}
           to="/admin/photos"
           href="/admin/photos"
         >
@@ -38,7 +39,7 @@ class Types extends React.Component {
         </Link>
         <Link
           onClick={() => this.setSelected(2)}
-          className={this.state.selected === 2 ? 'selected-type' : ''}
+          className={type === 'news' ? 'selected-type' : ''}
           to="/admin/news"
           href="/admin/news"
         >

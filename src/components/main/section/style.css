@@ -4,53 +4,25 @@
   left: 0px;
   background-size: cover !important;
   background-attachment: fixed !important;
-  background-position: initial !important;
+  background-position: center !important;
   background-repeat: no-repeat !important;
   width: 100%;
   height: 100%;
   transition: all 5s ease;
   background-position: center;
-  animation: sectionAnimation 60s linear infinite 0s;
+  animation: sectionAnimation 7s linear infinite 0s;
 }
 
 .trans {
-  transition: all 5s ease;
-  animation: textAnimation 7s linear infinite 0s;
-}
-
-@keyframes textAnimation {
-  5%,
-  50% {
-    opacity: 0;
-  }
-  0%,
-  55% {
-    opacity: 1;
-  }
+  font-size: 22px;
 }
 
 @keyframes sectionAnimation {
-  0% {
-    opacity: 0.8;
-    transform: scale(1.1);
-  }
-  20% {
-    opacity: 1;
-    transform: scale(1.1);
-  }
-  40% {
+  from {
     opacity: 0.8;
     transform: scale(1);
   }
-  60% {
-    opacity: 1;
-    transform: scale(1.1);
-  }
-  80% {
-    opacity: 0.8;
-    transform: scale(1);
-  }
-  100% {
+  to {
     opacity: 1;
     transform: scale(1.1);
   }

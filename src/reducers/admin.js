@@ -1,4 +1,5 @@
 import { ADMIN, GALLERY } from '../consts';
+import { EditorState } from 'draft-js';
 
 export const adminNews = (state = [], action) => {
   switch (action.type) {
@@ -58,12 +59,16 @@ export const editPhoto = (
         ...state,
         src: '',
         caption: '',
-        main: 1,
+        main: 0,
         name: '',
         id: null,
         file: null,
         uploading: false,
       };
+    case ADMIN.UPLOAD_PHOTO_ERROR: {
+      alert('Ошибка при загрузке фотографии');
+      return { ...state, uploading: false };
+    }
     case ADMIN.FILL_PHOTO_FORM: {
       let val = null;
       if (action.event.files) {
@@ -95,7 +100,7 @@ export const editCategory = (
   state = {
     id: null,
     name: '',
-    caption: '',
+    caption: EditorState.createEmpty(),
     src: '',
     file: null,
     uploading: false,
@@ -110,27 +115,34 @@ export const editCategory = (
       return {
         id: null,
         name: '',
-        caption: '',
+        caption: EditorState.createEmpty(),
         src: '',
         file: null,
         uploading: false,
       };
+    case ADMIN.ADD_CATEGORY_ERROR: {
+      alert('Произошла ошибка при загрузке, попробуйте еще раз');
+      return { ...state, uploading: false };
+    }
     case ADMIN.FILL_CATEGORY_FORM: {
       let val = null;
+      console.log(action);
       if (action.event.files) {
         [val] = action.event.files;
-      } else {
+      } else if (action.event.id) {
         val = action.event.value;
+      } else {
+        val = action.event;
+        return { ...state, caption: val };
       }
       return { ...state, [action.event.id]: val };
     }
     case ADMIN.GET_CATEGORY_SUCCESS: {
-      console.log(action.category);
       return {
         ...state,
         id: action.category.id,
         name: action.category.title,
-        caption: action.category.description,
+        caption: EditorState.createEmpty(), //action.category.description,
       };
     }
     default:

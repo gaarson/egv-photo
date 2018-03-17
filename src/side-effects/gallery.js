@@ -24,7 +24,7 @@ function* fetchCategories() {
     if (isEmpty(body)) body = [];
     else body[0].active = true;
 
-    yield fetchGalleryPhotos({ category: body[0].id });
+    //yield fetchGalleryPhotos({ category: body[0].id });
     yield put(gallery.categoriesSuccess(body));
   } catch (error) {
     yield put(gallery.categoriesError(error));

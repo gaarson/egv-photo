@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { admin } from '../../../actions';
 
+import Loader from '../../loader';
+
 import './style.css';
 
 const mapStateToProps = ({ editPhoto, adminCategories }) => ({
@@ -80,16 +82,20 @@ const PhotoForm = ({ editPhoto, fillForm, addPhoto, adminCategories }) => (
         />
       </label>
       <div className="download-btn">
-        <a
-          className="btn-form"
-          onClick={() =>
-            !editPhoto.uploading
-              ? addPhoto(editPhoto)
-              : console.log('cant upload')
-          }
-        >
-          Загрузить
-        </a>
+        {editPhoto.uploading ? (
+          <Loader style={{ margin: 'auto' }} />
+        ) : (
+          <a
+            className="btn-form"
+            onClick={() =>
+              !editPhoto.uploading
+                ? addPhoto(editPhoto)
+                : console.log('cant upload')
+            }
+          >
+            Загрузить
+          </a>
+        )}
       </div>
     </div>
   </section>

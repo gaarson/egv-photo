@@ -9,10 +9,14 @@ import { gallery } from '../../actions';
 
 import './Gallery.css';
 
-const mapStateToProps = ({ galleryPhotos, galleryCategories, ligthBox }) => ({
+const mapStateToProps = (
+  { galleryPhotos, galleryCategories, ligthBox },
+  { match },
+) => ({
   galleryPhotos,
   galleryCategories,
   ligthBox,
+  category: match.params.category,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -21,34 +25,38 @@ const mapDispatchToProps = dispatch => ({
   move: e => dispatch(gallery.move(e)),
   open: e => dispatch(gallery.open(e)),
   close: () => dispatch(gallery.close()),
-  change: (id) => {
-    dispatch(gallery.changeCategory(id));
-    dispatch(gallery.pending(id));
-  },
 });
 
 class Gallery extends React.Component {
   componentDidMount() {
-    this.props.getPhotos(1, 0);
+    this.props.getPhotos(this.props.category, 0);
     this.props.getCategories();
+  }
+
+  componentWillUpdate(next) {
+    if (next.category !== this.props.category)
+      this.props.getPhotos(next.category, 0);
   }
 
   render() {
     const {
-      galleryPhotos, galleryCategories, ligthBox, change, close, move, open,
+      galleryPhotos,
+      galleryCategories,
+      ligthBox,
+      close,
+      move,
+      open,
+      category,
     } = this.props;
     return (
       <div className="gallery-block">
         <div className="gallery-category">
-          {galleryCategories.map(cat => (
-            <Category
-              key={cat.id}
-              title={cat.title}
-              change={() => change(cat.id)}
-              pic={cat.src}
-              active={cat.active}
-            />
-          ))}
+          {galleryCategories.map(
+            cat =>
+              cat.id === +category && (
+                <Category key={cat.id} title={cat.title} pic={cat.src} />
+              ),
+          )}
         </div>
         <Photos photos={galleryPhotos} onClick={(event, obj) => open(obj)} />
         <LightBox
@@ -74,7 +82,6 @@ Gallery.propTypes = {
   galleryCategories: PropTypes.arrayOf(PropTypes.object).isRequired,
   galleryPhotos: PropTypes.arrayOf(PropTypes.object).isRequired,
   ligthBox: PropTypes.objectOf(PropTypes.any).isRequired,
-  change: PropTypes.func.isRequired,
   close: PropTypes.func.isRequired,
   move: PropTypes.func.isRequired,
   open: PropTypes.func.isRequired,

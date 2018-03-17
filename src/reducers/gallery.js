@@ -14,7 +14,12 @@ export const galleryCategories = (state, action) => {
     case GALLERY.CATEGORIES_SUCCESS:
       return action.data;
     case GALLERY.CHANGE_CATEGORY:
-      return state.map(cat => (cat.id === action.id ? { ...cat, active: true } : { ...cat, active: false }));
+      return state.map(
+        cat =>
+          cat.id === action.id
+            ? { ...cat, active: true }
+            : { ...cat, active: false },
+      );
     default:
       return state || [];
   }
@@ -30,7 +35,13 @@ export const ligthBox = (
 ) => {
   switch (action.type) {
     case GALLERY.PHOTOS_SUCCESS:
-      return { ...state, images: action.data };
+      return {
+        ...state,
+        images: action.data.map(image => ({
+          ...image,
+          src: image.src.replace(/.thumb./g, '.'),
+        })),
+      };
     case GALLERY.LIGHTBOX_OPEN:
       console.log(action);
       return {

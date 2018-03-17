@@ -21,3 +21,12 @@
 .admin-category-photos {
   margin-left: 20px;
 }
+
+.main-photo {
+  position: relative;
+  top: 15px;
+  right: 10px;
+  width: 8px;
+  height: 8px;
+  border-top: 8px solid #3498db;
+}

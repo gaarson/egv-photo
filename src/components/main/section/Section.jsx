@@ -4,20 +4,28 @@ import SectionButton from './SectionButton';
 
 import './style.css';
 
-const Section = ({ mainSections }) =>
+const Section = ({ mainSections, photos }) =>
   mainSections.map(section => (
     <section
       key={section.number}
       id={section.number}
       className={`${section.type}`}
     >
-      <div
-        className="slide-section"
-        style={{ background: `transparent url(${section.photo})` }}
-      />
+      {photos.map(photo => (
+        <div
+          key={photo.id}
+          className={photo.show ? 'slide-section' : ''}
+          style={{
+            display: photo.show ? 'block' : 'none',
+            background: `transparent url('http://ezhukov.ru${photo.src}')`,
+          }}
+        />
+      ))}
       <div className={section.mainType}>
-        {/* <h2 className={`${section.mainType}-title trans`}>{}</h2> */}
-        {/* <p className={`${section.mainType}-content trans`}>{section.content}</p> */}
+        <h2 className={`${section.mainType}-title`}>{section.title || ''}</h2>
+        <p className={`${section.mainType}-content trans`}>
+          {section.content || ''}
+        </p>
         {!section.number && (
           <SectionButton to={section.to} button={section.button} />
         )}

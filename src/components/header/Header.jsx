@@ -1,9 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import './style.css';
 
-const Header = ({ location: { pathname }, history: { push } }) => (
+const mapStateToProps = ({ galleryCategories }) => ({
+  categories: galleryCategories,
+});
+
+const Header = ({ location: { pathname }, history: { push }, categories }) => (
   <nav id="nav" style={{ display: pathname.search('admin') !== -1 && 'none' }}>
     <ul className="navbar">
       <li className="navbar-itm">
@@ -17,13 +22,14 @@ const Header = ({ location: { pathname }, history: { push } }) => (
         </Link>
       </li> */}
       <li className="navbar-itm">
-        <Link
-          to="#three"
-          className="navbar-link arrowScroll"
-          onClick={() => push('/gallery')}
-        >
-          Портфолио
-        </Link>
+        <a className="navbar-link arrowScroll portfolio">Портфолио</a>
+        <div className="dropdown-content">
+          {categories.map(cat => (
+            <Link key={cat.id} to={`/gallery/${cat.id}`}>
+              {cat.title}
+            </Link>
+          ))}
+        </div>
       </li>
       <li className="navbar-itm">
         <Link
@@ -45,12 +51,20 @@ const Header = ({ location: { pathname }, history: { push } }) => (
         <Link to="/prices" className="navbar-link">
           Прайс-лист
         </Link>
+        <div className="dropdown-content">
+          {categories.map(cat => (
+            <Link key={cat.id} to={`/prices/${cat.id}`}>
+              {cat.title}
+            </Link>
+          ))}
+        </div>
       </li>
     </ul>
     <h1 className="logo">
       <Link to="/">Фотограф Евгений Жуков</Link>
+
       <div className="socials-header">
-        <a
+        {/* <a
           href="https://www.instagram.com/evg_zhukov/?hl=ru"
           className="socials-itm-head"
         >
@@ -61,10 +75,10 @@ const Header = ({ location: { pathname }, history: { push } }) => (
         </a>
         <a href="https://vk.com/id272427546" className="socials-itm-head">
           <i className="fa fa-vk" aria-hidden="true" />
-        </a>
+        </a> */}
       </div>
     </h1>
   </nav>
 );
 
-export default Header;
+export default connect(mapStateToProps)(Header);
