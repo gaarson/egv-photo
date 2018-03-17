@@ -51,7 +51,10 @@ const Header = ({ location: { pathname }, history: { push }, categories }) => (
         <Link to="/prices" className="navbar-link">
           Прайс-лист
         </Link>
-        <div className="dropdown-content" style={{ right: '10px' }}>
+        <div
+          className="dropdown-content"
+          style={{ right: '10px', textAlign: 'right' }}
+        >
           {categories.map(cat => (
             <Link key={cat.id} to={`/prices/${cat.id}`}>
               {cat.title}
