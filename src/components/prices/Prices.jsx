@@ -23,7 +23,7 @@ const Prices = ({ categories, getCategories, id }) => {
           category.id === +id && (
             <div key={category.id} className="prices__category">
               <h1>{category.title}</h1>
-              <img src={category.src} alt="" />
+              <img src={'http://ezhukov.ru' + category.src} alt="" />
               <div className="text">{renderHtml(category.description)}</div>
             </div>
           ),
