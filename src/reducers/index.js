@@ -10,8 +10,10 @@ import {
 } from './admin';
 import { news, article } from './blog';
 import auth from './auth';
+import reviews from './reviews';
 
 export default {
+  reviews,
   auth,
   adminPhotos,
   adminCategories,

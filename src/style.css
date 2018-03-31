@@ -484,9 +484,10 @@ select:focus {
   text-align: center;
 }
 .welcome {
-  position: relative;
+  position: absolute;
   color: #fff;
   max-width: 75%;
+  bottom: 8%;
 }
 .welcome-title {
   font-size: 4.25em;

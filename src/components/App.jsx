@@ -9,6 +9,7 @@ import Blog from './blog/Blog';
 import Article from './blog/article/Article';
 import Prices from './prices/Prices';
 import Admin from './admin/Admin';
+import Reviews from './reviews';
 
 const routes = [
   {
@@ -76,6 +77,12 @@ const routes = [
     path: '/',
     exact: false,
     main: Footer,
+  },
+  {
+    id: 11,
+    path: '/reviews',
+    exact: false,
+    main: Reviews,
   },
 ];
 

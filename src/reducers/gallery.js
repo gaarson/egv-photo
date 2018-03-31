@@ -39,6 +39,7 @@ export const ligthBox = (
         ...state,
         images: action.data.map(image => ({
           ...image,
+          caption: `${image.title} ${image.caption}`,
           src: image.src.replace(/.thumb./g, '.'),
         })),
       };

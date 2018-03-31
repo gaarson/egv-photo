@@ -40,6 +40,13 @@ const Header = ({ location: { pathname }, history: { push }, categories }) => (
           Обратная связь
         </Link>
       </li>
+      {/*
+        <li>
+        <Link to="/reviews" className="navbar-link">
+          Отзывы
+        </Link>
+      </li>
+      */}
       {
         // <li className="navbar-itm">
         // <Link to="/news" className="navbar-link">

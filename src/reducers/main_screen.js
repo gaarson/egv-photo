@@ -3,6 +3,7 @@ import { MAIN } from '../consts';
 const defaultSections = [
   {
     number: '',
+    index: 0,
     type: 'intro',
     mainType: 'welcome',
     to: 'one',
@@ -11,6 +12,7 @@ const defaultSections = [
   },
   {
     number: 'one',
+    index: 0,
     mainType: 'info',
     type: 'career',
     title: 'Some Text',
@@ -21,13 +23,19 @@ const defaultSections = [
   },
 ];
 
+let index = 0;
+
 export const mainSections = (state = defaultSections, action) => {
   switch (action.type) {
     case MAIN.PHOTOS_SUCCESS:
       return state.map(section => {
-        const photo =
-          action.data[Math.floor(Math.random() * (action.data.length - 0) + 0)];
-        return { ...section, photo: photo.src };
+        const photo = action.data[section.index];
+        // action.data[Math.floor(Math.random() * (action.data.length - 0) + 0)];
+        return {
+          ...section,
+          index: section.index === action.data.length ? 0 : section.index++,
+          photo: photo.src,
+        };
       });
     default:
       return state || [];
@@ -37,7 +45,7 @@ export const mainSections = (state = defaultSections, action) => {
 export const mainPhotos = (state, action) => {
   switch (action.type) {
     case MAIN.PHOTOS_SUCCESS: {
-      const index = Math.floor(Math.random() * (action.data.length - 0) + 0);
+      index = index === action.data.length - 1 ? 0 : index + 1;
 
       return action.data.map((item, i) => {
         if (index === i) {
