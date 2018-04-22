@@ -3,14 +3,21 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import Photos from 'react-photo-gallery';
+import { reviews } from '../../../actions';
+
 import './style.css';
 
-const mapStateToProps = ({ match }) => ({
+const mapStateToProps = ({ editReview }, { match }) => ({
   id: match && match.params.id,
+  edit: editReview,
 });
 
-const Article = ({ info, id, set }) => {
+const mapDispatchToProps = dispatch => ({
+  set: ({ target }) => dispatch(reviews.set(target)),
+  send: review => dispatch(reviews.upload(review)),
+});
+
+const Review = ({ info, edit, id, set, send }) => {
   const data = info;
   const articleClass = id ? 'article-full' : 'article';
 
@@ -18,55 +25,72 @@ const Article = ({ info, id, set }) => {
     return (
       <div className={articleClass}>
         <h3 className={`${articleClass}__title`}>
-          <input onChannge={set} value={data.name} placeholder="Ваше имя" />
+          <input
+            onChange={set}
+            value={edit.name}
+            id="name"
+            placeholder="Ваше имя"
+          />
         </h3>
         <p className={`${articleClass}__description`}>
-          <testarea>{data.description}</testarea>
+          <textarea
+            placeholder="Отзыв..."
+            value={edit.description}
+            style={{ width: '200%', height: '150px' }}
+            id="description"
+            onChange={set}
+          >
+            {data.description}
+          </textarea>
         </p>
-        <div className={`${articleClass}__photo-block`}>
-          {id ? (
-            <Photos photos={data.photos} />
-          ) : (
-            <Link to={`/reviews/${data.id}`}>
-              <img src={data.src} alt="" width="250" height="250" />
-            </Link>
-          )}
+        <div className={`review__photo-block`}>
+          <Link to={`/reviews/${data.id}`}>
+            <img src={data.src} alt="" width="250" height="250" />
+          </Link>
+        </div>
+        <div className={`${articleClass}__upload-button`}>
+          <div
+            onClick={() => send(edit)}
+            style={{ display: 'flex', justifyContent: 'center' }}
+          >
+            <p className="btn-form">Отправить</p>
+          </div>
         </div>
       </div>
     );
   }
-
   return (
     <div className={articleClass}>
-      <h3 className={`${articleClass}__title`}>
-        <Link to={`/reviews/${data.id}`}>{data.name}</Link>
-      </h3>
-      <p className={`${articleClass}__description`}>
-        {!id ? data.description.substring(0, 120) : data.description}
-        <Link to={`/news/${data.id}`}>...</Link>
-      </p>
-      <div className={`${articleClass}__photo-block`}>
-        {id ? (
-          <Photos photos={data.photos} />
-        ) : (
-          <Link to={`/reviews/${data.id}`}>
-            <img src={data.src} alt="" width="250" height="250" />
-          </Link>
-        )}
+      <div className="review-head">
+        <img
+          className="download-photo"
+          alt=""
+          src={`http://ezhukov.ru${data.src}`}
+        />
+        <h3 className={`${articleClass}__title`}>
+          <Link to={`/reviews/${data.id}`}>{data.name}</Link>
+        </h3>
       </div>
+      <p className={`${articleClass}__description`}>
+        {data.description}
+        {/* !id ? data.description.substring(0, 120) : data.description */}
+        {/*<Link to={`/news/${data.id}`}>...</Link> */}
+      </p>
     </div>
   );
 };
 
-Article.propTypes = {
+Review.propTypes = {
   id: PropTypes.string,
   info: PropTypes.objectOf(PropTypes.any),
-  set: PropTypes.function,
+  edit: PropTypes.objectOf(PropTypes.any).isRequired,
+  set: PropTypes.func.isRequired,
+  send: PropTypes.func.isRequired,
 };
 
-Article.defaultProps = {
+Review.defaultProps = {
   id: null,
   info: {},
 };
 
-export default connect(mapStateToProps)(Article);
+export default connect(mapStateToProps, mapDispatchToProps)(Review);

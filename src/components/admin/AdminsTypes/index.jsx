@@ -45,6 +45,14 @@ class Types extends React.Component {
         >
           Новости
         </Link>
+        <Link
+          onClick={() => this.setSelected(3)}
+          className={type === 'reviews' ? 'selected-type' : ''}
+          to="/admin/reviews"
+          href="/admin/reviews"
+        >
+          Отзывы
+        </Link>
       </div>
     );
   }

@@ -2,7 +2,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import createSagaMiddleware from 'redux-saga';
-import { combineReducers, createStore, applyMiddleware } from 'redux';
+import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
 import $ from 'jquery';
 
 import './style.css';
@@ -15,11 +15,14 @@ import registerServiceWorker from './registerServiceWorker';
 
 window.$ = $;
 
+/* eslint-disable no-underscore-dangle */
 const sagaMiddleware = createSagaMiddleware();
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(
   combineReducers(reducers),
-  applyMiddleware(sagaMiddleware),
+  /* preloadedState, */ composeEnhancers(applyMiddleware(sagaMiddleware)),
 );
+/* eslint-enable */
 
 sagaMiddleware.run(sagas);
 render(

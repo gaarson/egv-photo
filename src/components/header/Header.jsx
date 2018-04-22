@@ -40,20 +40,11 @@ const Header = ({ location: { pathname }, history: { push }, categories }) => (
           Обратная связь
         </Link>
       </li>
-      {/*
-        <li>
+      <li className="navbar-itm">
         <Link to="/reviews" className="navbar-link">
           Отзывы
         </Link>
       </li>
-      */}
-      {
-        // <li className="navbar-itm">
-        // <Link to="/news" className="navbar-link">
-        // Последние новости
-        // </Link>
-        // </li>
-      }
       <li className="navbar-itm">
         <Link to="/prices" className="navbar-link">
           Прайс-лист
@@ -72,21 +63,6 @@ const Header = ({ location: { pathname }, history: { push }, categories }) => (
     </ul>
     <h1 className="logo">
       <Link to="/">Фотограф Евгений Жуков</Link>
-
-      <div className="socials-header">
-        {/* <a
-          href="https://www.instagram.com/evg_zhukov/?hl=ru"
-          className="socials-itm-head"
-        >
-          <i className="fa fa-instagram" aria-hidden="true" />
-        </a>
-        <a href="/" className="socials-itm-head">
-          <i className="fa fa-facebook" aria-hidden="true" />
-        </a>
-        <a href="https://vk.com/id272427546" className="socials-itm-head">
-          <i className="fa fa-vk" aria-hidden="true" />
-        </a> */}
-      </div>
     </h1>
   </nav>
 );

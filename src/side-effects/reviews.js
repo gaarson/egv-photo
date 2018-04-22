@@ -5,9 +5,9 @@ import { isEmpty } from '../utils';
 import { REVIEWS } from '../consts';
 import { reviews } from '../actions';
 
-function* fetchReviews() {
+function* fetchReviews({ isAdmin }) {
   try {
-    let { body } = yield agent.get('/api/reviews');
+    let { body } = yield agent.get('/api/reviews').query({ isAdmin });
 
     if (isEmpty(body)) body = [];
 
@@ -17,9 +17,9 @@ function* fetchReviews() {
   }
 }
 
-function* uploadReview() {
+function* uploadReview({ info }) {
   try {
-    const { body } = yield agent.post('/api/reviews');
+    const { body } = yield agent.post('/api/reviews').send(info);
 
     // if (isEmpty(body)) body = [];
     // else body[0].active = true;
@@ -30,11 +30,21 @@ function* uploadReview() {
   }
 }
 
+function* uploadImage({ image }) {
+  try {
+    const preparedImage = new FormData();
+    preparedImage.append('file', image.files[0], image.id);
+
+    const { body } = yield agent.post('/api/reviews').send(preparedImage);
+    alert('фото зкгружено');
+  } catch (error) {
+    yield put(reviews.uploadError(error));
+  }
+}
+
 function* approveReview({ isApproved }) {
   try {
-    const { body } = yield agent
-      .get('/api/reviews')
-      .query({ answer: isApproved });
+    const { body } = yield agent.post('/api/reviews').send(isApproved);
 
     yield put(reviews.uploadSuccess(body));
   } catch (error) {
@@ -45,6 +55,8 @@ function* approveReview({ isApproved }) {
 export default function* watchFetchReviews() {
   yield takeLatest(REVIEWS.REVIEWS_PENDING, fetchReviews);
   yield takeLatest(REVIEWS.UPLOAD_REVIEW, uploadReview);
+
+  yield takeLatest(REVIEWS.UPLOAD_REVIEW_IMAGE, uploadImage);
 
   yield takeLatest(REVIEWS.APPROVE_REVIEW, approveReview);
 }

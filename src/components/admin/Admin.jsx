@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { admin, gallery } from '../../actions';
+import { admin, gallery, reviews } from '../../actions';
 
 import Sidebar from './sidebar/Sidebar';
 import Burger from './burger/Burger';
@@ -10,6 +10,7 @@ import Auth from './auth/Auth';
 import PhotoForm from './photo-form/PhotoForm';
 import CategoryForm from './category-form/CategoryForm';
 import ArticleForm from './article-form/ArticleForm';
+import ReviewForm from './ReviewForm';
 import AdminsTypes from './AdminsTypes';
 
 import './Admin.css';
@@ -22,12 +23,14 @@ const mapStateToProps = ({ auth }, { match: { params } }) => ({
 const mapDispatchToProps = dispatch => ({
   getCategories: () => dispatch(gallery.categoriesPending()),
   getPhotos: () => dispatch(admin.photosPending()),
+  getReviews: isAdmin => dispatch(reviews.pending(isAdmin)),
 });
 
 class Admin extends React.Component {
   componentDidMount() {
     this.props.getPhotos();
     this.props.getCategories();
+    this.props.getReviews(true);
 
     const { $ } = window;
     const inputs = document.querySelectorAll('.input-file');
@@ -71,6 +74,7 @@ class Admin extends React.Component {
     if (type === 'photos') form = <PhotoForm />;
     else if (type === 'categories') form = <CategoryForm />;
     else if (type === 'news') form = <ArticleForm />;
+    else if (type === 'reviews') form = <ReviewForm />;
 
     if (this.props.auth) {
       admin = (
@@ -92,6 +96,7 @@ Admin.propTypes = {
   auth: PropTypes.string.isRequired,
   getCategories: PropTypes.func.isRequired,
   getPhotos: PropTypes.func.isRequired,
+  getReviews: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Admin);

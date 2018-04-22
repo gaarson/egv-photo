@@ -38,6 +38,7 @@ class Reviews extends React.Component {
 
 Review.propTypes = {
   reviews: PropTypes.arrayOf(PropTypes.object),
+  getReviews: PropTypes.func.isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Reviews);

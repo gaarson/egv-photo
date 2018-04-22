@@ -1,7 +1,7 @@
 import { REVIEWS } from './../consts';
 
 export default {
-  pending: () => ({ type: REVIEWS.REVIEWS_PENDING }),
+  pending: isAdmin => ({ type: REVIEWS.REVIEWS_PENDING, isAdmin }),
   success: data => ({ type: REVIEWS.REVIEWS_SUCCESS, data }),
   error: error => ({ type: REVIEWS.REVIEWS_ERROR, error }),
 
@@ -19,6 +19,8 @@ export default {
     type: REVIEWS.UPLOAD_REVIEW_ERROR,
     error,
   }),
+
+  set: event => ({ type: REVIEWS.SET, event }),
 
   approve: isApproved => ({ type: REVIEWS.APPROVE_REVIEW, isApproved }),
 

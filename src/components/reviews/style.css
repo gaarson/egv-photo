@@ -1,3 +1,6 @@
+.blog-row {
+  width: 70%;
+}
 .blog-container {
   height: 100%;
   margin-top: 60px;
@@ -15,9 +18,9 @@
   height: 2.5em;
   width: 2.5em;
   border-radius: 999px;
-  position: relative;
-  bottom: 20%;
-  left: 22%;
+  position: fixed;
+  top: 8%;
+  right: 5%;
 }
 
 .add-review:after,
